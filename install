@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+ln -sv ${PWD}/.bash_profile ~
+
+ln -sv ${PWD}/.bash_completion.d ~
+
+ln -sv ${PWD}/.vimrc ~
+
+ln -sv ${PWD}/git-completion.bash ~
+
+ln -sv ${PWD}/.git-prompt.sh ~
