@@ -128,6 +128,9 @@ colorscheme solarized
 " space is leader (all hail space)
 let mapleader = "\<Space>"
 
+" When pasting in visual mode, reselect and yank so you don't overwrite the register
+xnoremap p pgvy
+
 " map :bd to :Bclose so spilts don't close with bd
 cabbrev bd Bclose
 
