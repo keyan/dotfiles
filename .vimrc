@@ -135,7 +135,8 @@ xnoremap p pgvy
 cabbrev bd Bclose
 
 " save quicker
-nnoremap <Leader>w :w<CR>
+" Add SyntasticCheck here as a hotfix unitl I can debug why autosave is broken
+nnoremap <Leader>w :w<CR> :SyntasticCheck<CR>
 
 " v to expand selection, <C-v> to reduce
 vmap v <Plug>(expand_region_expand)
@@ -239,8 +240,7 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_enable_signs=0
+let g:syntastic_enable_signs=1
 let syntastic_mode_map = { 'passive_filetypes': ['html', 'less'] }
 let g:syntastic_python_checkers=['flake8', 'python']
 
