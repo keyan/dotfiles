@@ -7,16 +7,13 @@ source ~/.git-prompt.sh
 
 export PATH=$PATH:~/usr/local/bin
 export PATH=$PATH:~/bin
-#git tab completion
+# Git tab completion
 source ~/git-completion.bash
-# if [ -f `brew --prefix`/etc/bash_completion ]; then
-#     . `brew --prefix`/etc/bash_completion
-# fi
 
-#autojump
+# Autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
-# colors
+# Colors
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[1;33m\]"
 GREEN="\[\033[0;32m\]"
@@ -30,18 +27,16 @@ LIGHT_GRAY="\[\033[0;37m\]"
 COLOR_NONE="\[\e[0m\]"
 
 export PS1="${GREEN}keyan@ \w${YELLOW}\$(__git_ps1) ${GREEN}$ ${COLOR_NONE}"
-# PS1="$PS1${WHITE}"
-# trap '[[ -t 1 ]] && tput sgr1' DEBUG
 export CLICOLOR=1
-#export TERM=xterm-256color
 
-#alias'
 alias gl='git log'
 alias gb='git branch'
 alias gs='git status'
 alias gco='git checkout'
 alias wv='workon venmo'
 alias vs='vagrant ssh'
+alias phag='cat ~/.persistent_history|ag'
+alias hag='history|ag'
 
 # History stuff
 #################
@@ -68,9 +63,3 @@ run_on_prompt_command()
 }
 
 PROMPT_COMMAND="run_on_prompt_command"
-
-# For when I want to search through peristant history
-alias phag='cat ~/.persistent_history|ag'
-
-# For searching through just normal history
-alias hag='history|ag'

@@ -7,7 +7,7 @@ syntax enable
 
 " General Options
 " -------------------------------------
-" automatically set up vundle and install all bundles if vundle is not installed
+" Automatically set up vundle and install all bundles if vundle is not installed.
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
 if !filereadable(vundle_readme)
@@ -28,15 +28,8 @@ Plugin 'tpope/vim-commentary'
 Plugin 'ggreer/the_silver_searcher'
 Plugin 'kien/ctrlp.vim'
 Plugin 'rbgrouleff/bclose.vim'
-" Plugin 'rking/ag.vim'
-
-" I love this, but it is so slow
 " Plugin 'myusuf3/numbers.vim'
-
-" Inline git status
 Plugin 'airblade/vim-gitgutter'
-
-" Git integration
 Plugin 'tpope/vim-fugitive'
 
 " General Options
@@ -61,10 +54,11 @@ set backspace=2                       " full backspacing capabilities
 set backspace=indent,eol,start        " behave like a normal backspace
 set laststatus=2                      " always show a status line
 set number                            " show number line
-set magic                             " enables regex highlight?
+set magic                             " enables regex highlight
 set ttimeoutlen=50
 set timeoutlen=300	  	      " esc delay
 set clipboard=unnamed                 " yank+paste use the osx clipboard
+
 
 " undofile
 " -------------------------------------
@@ -83,7 +77,6 @@ endif
 
 " tabs and indenting
 " -------------------------------------
-" should be taken care of by vim-sleuth 
 set expandtab                         " replace tabs with spaces
 set shiftwidth=4
 set softtabstop=4
@@ -93,7 +86,7 @@ set shiftround                        " better tab aligning
 
 " searching
 " -------------------------------------
-set hlsearch                         " highlight search results
+set hlsearch                          " highlight search results
 set incsearch                         " increment search
 set ignorecase                        " case-insensitive search
 set smartcase                         " upper-case sensitive search
@@ -120,12 +113,11 @@ syntax enable
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
-"highlight MatchParen cterm=bold ctermfg=Grey ctermbg=DarkGrey
 
 
 " custom keybindings
 " -------------------------------------
-" space is leader (all hail space)
+" Space is leader (all hail space)
 let mapleader = "\<Space>"
 
 " When pasting in visual mode, reselect and yank so you don't overwrite the register
@@ -134,7 +126,7 @@ xnoremap p pgvy
 " map :bd to :Bclose so spilts don't close with bd
 cabbrev bd Bclose
 
-" save quicker
+" Save quicker
 " Add SyntasticCheck here as a hotfix unitl I can debug why autosave is broken
 nnoremap <Leader>w :w<CR> :SyntasticCheck<CR>
 
@@ -152,19 +144,9 @@ vnoremap k gk
 nnoremap H ^
 nnoremap L $
 
-" halp
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
-" autocorrect plx
-"nnoremap ; :
-
 " get out of insert mode
 inoremap jj <ESC>
 inoremap jk <ESC>
-"inoremap kj <ESC>
-"inoremap kk <ESC>
 
 " allow writing root files when forgetting to sudo
 cmap w!! w !sudo tee % >/dev/null<CR>:e!<CR><CR>
@@ -173,8 +155,6 @@ cmap w!! w !sudo tee % >/dev/null<CR>:e!<CR><CR>
 map q: :q
 map q <Nop>
 
-" Shortcut to shut off Numbers for huge files
-" nnoremap <F3> :NumbersToggle<CR>
 
 " auto commands
 " -------------------------------------
@@ -192,38 +172,12 @@ au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 au FocusLost * :wa
 set wildignore+=*.lib,*.dll,*.exe,*.o,*.obj,*.pyc,*.pyo,*.png,*.gif,*.jpg,*.jpeg,*.bmp,*.tiff " ignore filetypes for auto complete
 
-" this function should auto-toggle paste mode when using cmd+v to paste
-" function! WrapForTmux(s)
-"   if !exists('$TMUX')
-"     return a:s
-"   endif
 
-"   let tmux_start = "\<Esc>Ptmux;"
-"   let tmux_end = "\<Esc>\\"
-
-"   return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
-" endfunction
-
-" let &t_SI .= WrapForTmux("\<Esc>[?2004h")
-" let &t_EI .= WrapForTmux("\<Esc>[?2004l")
-
-" function! XTermPasteBegin()
-"   set pastetoggle=<Esc>[201~
-"   set paste
-"   return ""
-" endfunction
-
-" inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
-
-" plugin settings
+" Ctrl-P Settings
 " -------------------------------------
-
-" ctrl p uses gitignore
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-" let g:ctrlp_use_caching = 0
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
-" Airline Setting
+" Airline Settings
 " ---------------------------------
 let g:airline_theme = 'powerlineish'
 let g:airline#extensions#whitespace#enabled = 1
