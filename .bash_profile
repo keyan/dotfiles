@@ -9,6 +9,7 @@ export PATH=$PATH:~/usr/local/bin
 export PATH=$PATH:~/bin
 # Git tab completion
 source ~/git-completion.bash
+source ~/python-argcomplete.sh
 
 # Autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
