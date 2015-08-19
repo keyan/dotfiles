@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Sometimes default shell will be /bin/sh or otherwise
-chsh -s /bin/bash
-
 mkdir -p ~/.vim/after/ftplugin/
 
 ln -sv ${PWD}/.bash_profile ~

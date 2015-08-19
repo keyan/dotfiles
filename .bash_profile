@@ -32,9 +32,9 @@ export CLICOLOR=1
 alias gl='git log'
 alias gb='git branch'
 alias gs='git status'
-alias gco='git checkout'
+alias gc='git checkout'
 alias wv='workon venmo'
-alias vs='vagrant ssh'
+alias vs='vagrant ssh dev-venmobox'
 alias phag='cat ~/.persistent_history|ag'
 alias hag='history|ag'
 
