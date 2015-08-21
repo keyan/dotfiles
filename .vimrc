@@ -197,6 +197,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs=1
 let syntastic_mode_map = { 'passive_filetypes': ['html', 'less'] }
 let g:syntastic_python_checkers=['flake8', 'python']
+let g:syntastic_python_flake8_args = "--max-line-length=100"
 
 " Ag/grep searching settings
 " --------------------------------
