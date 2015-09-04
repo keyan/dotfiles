@@ -1,15 +1,21 @@
 export EDITOR=vim
 export GIT_EDITOR=vim
 export SHABU_REPO=~/code/shabu
+export PATH=$PATH:~/usr/local/bin
+
+# Virtualenvwrapper directory
 export WORKON_HOME=$HOME/Envs
+
+# Scripts
+export PATH=$PATH:~/bin
+source ~/git-completion.bash
+source ~/python-argcomplete.sh
 source /usr/local/bin/virtualenvwrapper.sh
 source ~/.git-prompt.sh
 
-export PATH=$PATH:~/usr/local/bin
-export PATH=$PATH:~/bin
-# Git tab completion
-source ~/git-completion.bash
-source ~/python-argcomplete.sh
+# go path
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
 
 # Autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
