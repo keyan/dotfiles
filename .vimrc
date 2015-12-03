@@ -28,9 +28,10 @@ Plugin 'tpope/vim-commentary'
 Plugin 'ggreer/the_silver_searcher'
 Plugin 'kien/ctrlp.vim'
 Plugin 'rbgrouleff/bclose.vim'
-" Plugin 'myusuf3/numbers.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
 
 " General Options
 " -------------------------------------
@@ -40,7 +41,7 @@ set autoread                          " detect external changes
 set scrolloff=5                       " lines between cursor and edge
 set autoindent
 set showmode
-set hidden
+set hidden                            " allow for hidden open files in buffers
 set showcmd                           " display current command
 set cmdheight=1                       " set the command height
 set shortmess+=I                      " disable the welcome screen
@@ -48,7 +49,7 @@ set complete+=k                       " enable dictionary completion
 set wildmenu  			      " cmd line completion
 set wildmode=list:longest,full
 set wildignore=*.o,*~,*.pyc,*.pyo,*.so,*.sw*,__pycache__
-set ttyfast
+" set ttyfast
 set ruler                             " ruler display in status line
 set backspace=2                       " full backspacing capabilities
 set backspace=indent,eol,start        " behave like a normal backspace
