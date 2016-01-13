@@ -10,12 +10,25 @@ export WORKON_HOME=$HOME/Envs
 export PATH=$PATH:~/bin
 source ~/git-completion.bash
 source ~/python-argcomplete.sh
-source /usr/local/bin/virtualenvwrapper.sh
 source ~/.git-prompt.sh
+source /usr/local/bin/virtualenvwrapper.sh
 
 # go path
 export GOPATH=$HOME/.go
+export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
+# Puppet VM
+# Location of local module checkouts
+export PUPPET_MODULES_DIR=~/code/puppet-modules
+
+# Location of r10k environment deploys
+export R10K_ENVIRONMENTS_DIR=~/code/r10k-environments
+
+# Location of security keys
+export SEC_DIR=~/sec
+
 
 # Autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh

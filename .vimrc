@@ -32,6 +32,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
+Plugin 'rodjek/vim-puppet'
 
 " General Options
 " -------------------------------------
@@ -156,6 +157,7 @@ cmap w!! w !sudo tee % >/dev/null<CR>:e!<CR><CR>
 map q: :q
 map q <Nop>
 
+map <leader>k :NERDTree<CR>
 
 " auto commands
 " -------------------------------------
