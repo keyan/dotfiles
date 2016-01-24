@@ -1,10 +1,19 @@
 #!/bin/bash
 
+brew install python
+brew install socat
+
+pip install powerline-status
+
+git clone git@github.com:powerline/fonts.git /tmp/powerline
+/tmp/powerline/install.sh
+
 mkdir -p ~/.vim/after/ftplugin/
 
 cp ${PWD}/git-completion.bash ~
 cp ${PWD}/python-argcomplete.sh ~
 
+ln -sv ${PWD}/.bashrc ~
 ln -sv ${PWD}/.bash_profile ~
 ln -sv ${PWD}/.bash_completion.d ~
 ln -sv ${PWD}/.vimrc ~

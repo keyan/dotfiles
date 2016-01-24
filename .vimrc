@@ -2,7 +2,8 @@ set nocompatible "be iMproved
 filetype off " necessary to make sure vundle does something
 set modelines=0 "security hole involving modelines
 
-filetype plugin indent on "required for vundle
+" Turns on filetype detection and filespecific indentation
+filetype plugin indent on
 syntax enable
 
 " General Options
@@ -158,6 +159,8 @@ map q: :q
 map q <Nop>
 
 map <leader>k :NERDTree<CR>
+map <leader>v :vsp<CR>
+map <leader>s :sp<CR>
 
 " auto commands
 " -------------------------------------
