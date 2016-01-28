@@ -13,6 +13,9 @@ source ~/python-argcomplete.sh
 source ~/.git-prompt.sh
 source /usr/local/bin/virtualenvwrapper.sh
 
+# OPAM configuration
+. /Users/$(whoami)/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
 # go path
 export GOPATH=$HOME/.go
 export GOROOT=/usr/local/opt/go/libexec
@@ -65,7 +68,8 @@ run_on_prompt_command()
 PROMPT_COMMAND="run_on_prompt_command"
 
 # Powerline prompt, use custom is not installed
-if [ -f `which powerline-daemon` ]; then
+# if [ -f `which powerline-daemon` ]; then
+if false; then
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
