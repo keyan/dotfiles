@@ -176,8 +176,11 @@ au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " save on lose focus
 au FocusLost * :wa
-set wildignore+=*.lib,*.dll,*.exe,*.o,*.obj,*.pyc,*.pyo,*.png,*.gif,*.jpg,*.jpeg,*.bmp,*.tiff " ignore filetypes for auto complete
+" ignore filetypes for auto complete
+set wildignore+=*.lib,*.dll,*.exe,*.o,*.obj,*.pyc,*.pyo,*.png,*.gif,*.jpg,*.jpeg,*.bmp,*.tiff
 
+" For ocp-indent (OCaml indentation)
+autocmd FileType ocaml source /Users/kpishdadian/.opam/system/share/ocp-indent/vim/indent/ocaml.vim
 
 " Ctrl-P Settings
 " -------------------------------------
