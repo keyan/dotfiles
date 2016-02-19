@@ -13,7 +13,7 @@ source ~/.git-prompt.sh
 source /usr/local/bin/virtualenvwrapper.sh
 
 # OPAM configuration
-. /Users/$(whoami)/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+. /Users/$USER/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 # go path
 export GOPATH=$HOME/.go

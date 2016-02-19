@@ -180,7 +180,7 @@ au FocusLost * :wa
 set wildignore+=*.lib,*.dll,*.exe,*.o,*.obj,*.pyc,*.pyo,*.png,*.gif,*.jpg,*.jpeg,*.bmp,*.tiff
 
 " For ocp-indent (OCaml indentation)
-autocmd FileType ocaml source /Users/kpishdadian/.opam/system/share/ocp-indent/vim/indent/ocaml.vim
+autocmd FileType ocaml source /Users/$USER/.opam/system/share/ocp-indent/vim/indent/ocaml.vim
 
 " Ctrl-P Settings
 " -------------------------------------
