@@ -9,7 +9,6 @@ export WORKON_HOME=$HOME/Envs
 # Scripts
 export PATH=$PATH:~/bin
 source ~/git-completion.bash
-source ~/python-argcomplete.sh
 source ~/.git-prompt.sh
 source /usr/local/bin/virtualenvwrapper.sh
 
@@ -91,4 +90,3 @@ else
     export PS1="${GREEN}\u@ \w${YELLOW}\$(__git_ps1) ${GREEN}$ ${COLOR_NONE}"
     export CLICOLOR=1
 fi
-
