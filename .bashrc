@@ -34,6 +34,11 @@ export SEC_DIR=~/sec
 # Autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
+# Git completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
 alias gl='git log'
 alias gb='git branch'
 alias gs='git status'
