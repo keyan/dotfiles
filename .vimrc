@@ -162,6 +162,9 @@ map <leader>k :NERDTree<CR>
 map <leader>v :vsp<CR>
 map <leader>s :sp<CR>
 
+" quick braces, CTRL+F for {}
+imap <C-F> {<CR>}<C-O>O
+
 " auto commands
 " -------------------------------------
 " turn hash bangs into executeables automatically

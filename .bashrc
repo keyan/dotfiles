@@ -47,6 +47,7 @@ alias wv='workon venmo'
 alias vs='vagrant ssh dev-venmobox'
 alias phag='cat ~/.persistent_history|ag'
 alias hag='history|ag'
+alias ll='ls -la'
 
 # Keeps history FOOOORRR-EEEEE-VER
 log_bash_persistent_history()
