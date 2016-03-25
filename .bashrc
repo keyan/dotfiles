@@ -43,11 +43,15 @@ alias gl='git log'
 alias gb='git branch'
 alias gs='git status'
 alias gc='git checkout'
+alias gbclear="git branch --merged | grep -v '\*\|master' | xargs -n 1 git branch -d"
+alias gtclear="git tag -L | xargs git tag -d; git fetch"
 alias wv='workon venmo'
-alias vs='vagrant ssh dev-venmobox'
 alias phag='cat ~/.persistent_history|ag'
 alias hag='history|ag'
 alias ll='ls -la'
+
+# Let `hub` be used as `git`
+eval "$(hub alias -s)"
 
 # Keeps history FOOOORRR-EEEEE-VER
 log_bash_persistent_history()
@@ -73,6 +77,8 @@ run_on_prompt_command()
 PROMPT_COMMAND="run_on_prompt_command"
 
 # Powerline prompt, use custom is not installed
+# keeping this off for now because I haven't
+# finished customizing.
 # if [ -f `which powerline-daemon` ]; then
 if false; then
     powerline-daemon -q

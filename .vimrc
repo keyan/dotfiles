@@ -1,10 +1,6 @@
 set nocompatible "be iMproved
 filetype off " necessary to make sure vundle does something
-set modelines=0 "security hole involving modelines
-
-" Turns on filetype detection and filespecific indentation
-filetype plugin indent on
-syntax enable
+set modelines=0 "security hole involving modelines, probably patched by now?
 
 " General Options
 " -------------------------------------
@@ -34,6 +30,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'rodjek/vim-puppet'
+
+" Turns on filetype detection and filespecific indentation.
+" Must go after the Vundle configuration above in order to use `ftdetect` dirs.
+filetype plugin indent on
+syntax enable
 
 " General Options
 " -------------------------------------
@@ -158,12 +159,21 @@ cmap w!! w !sudo tee % >/dev/null<CR>:e!<CR><CR>
 map q: :q
 map q <Nop>
 
+" I always mistype :wq
+command Wq wq
+command WQ wq
+command Q q
+" quit easy, quit often
+nnoremap <Leader>q :q<CR>
+
 map <leader>k :NERDTree<CR>
 map <leader>v :vsp<CR>
 map <leader>s :sp<CR>
 
 " quick braces, CTRL+F for {}
 imap <C-F> {<CR>}<C-O>O
+" puppet declaration braces, CTRL+D
+imap <C-D> {<CR>}<ESC>kA<Space>'
 
 " auto commands
 " -------------------------------------
@@ -230,4 +240,3 @@ endif
 
 " open line in quickfix window in new vertical split
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
-
