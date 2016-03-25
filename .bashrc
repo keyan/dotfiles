@@ -12,22 +12,17 @@ source ~/git-completion.bash
 source ~/.git-prompt.sh
 source /usr/local/bin/virtualenvwrapper.sh
 
-# OPAM configuration
-. /Users/$USER/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
 # go path
 export GOPATH=$HOME/.go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
-# Puppet VM
+### Puppet VM
 # Location of local module checkouts
 export PUPPET_MODULES_DIR=~/code/puppet-modules
-
 # Location of r10k environment deploys
 export R10K_ENVIRONMENTS_DIR=~/code/r10k-environments
-
 # Location of security keys
 export SEC_DIR=~/sec
 
@@ -44,7 +39,7 @@ alias gb='git branch'
 alias gs='git status'
 alias gc='git checkout'
 alias gbclear="git branch --merged | grep -v '\*\|master' | xargs -n 1 git branch -d"
-alias gtclear="git tag -L | xargs git tag -d; git fetch"
+alias gtclear="git tag -l | xargs git tag -d; git fetch"
 alias wv='workon venmo'
 alias phag='cat ~/.persistent_history|ag'
 alias hag='history|ag'
