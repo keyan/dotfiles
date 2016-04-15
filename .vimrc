@@ -20,6 +20,7 @@ call vundle#rc()
 Plugin 'bling/vim-airline'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'joshdick/onedark.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'ggreer/the_silver_searcher'
@@ -114,9 +115,7 @@ autocmd GUIEnter * set visualbell t_vb=
 " -------------------------------------
 syntax on
 syntax enable
-let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
+colorscheme onedark
 
 
 " custom keybindings

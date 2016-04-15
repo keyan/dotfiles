@@ -94,6 +94,6 @@ else
     LIGHT_GRAY="\[\033[0;37m\]"
     COLOR_NONE="\[\e[0m\]"
 
-    export PS1="${GREEN}\u@ \w${YELLOW}\$(__git_ps1) ${GREEN}$ ${COLOR_NONE}"
+    export PS1="${GREEN}\u @ \w${YELLOW}\$(__git_ps1) ${GREEN}$ ${COLOR_NONE}"
     export CLICOLOR=1
 fi
