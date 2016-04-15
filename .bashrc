@@ -1,6 +1,5 @@
 export EDITOR=vim
 export GIT_EDITOR=vim
-export SHABU_REPO=~/code/shabu
 export PATH=$PATH:~/usr/local/bin
 
 # Virtualenvwrapper directory
@@ -18,14 +17,6 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
-### Puppet VM
-# Location of local module checkouts
-export PUPPET_MODULES_DIR=~/code/puppet-modules
-# Location of r10k environment deploys
-export R10K_ENVIRONMENTS_DIR=~/code/r10k-environments
-# Location of security keys
-export SEC_DIR=~/sec
-
 # Autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
@@ -40,7 +31,6 @@ alias gs='git status'
 alias gc='git checkout'
 alias gbclear="git branch --merged | grep -v '\*\|master' | xargs -n 1 git branch -d"
 alias gtclear="git tag -l | xargs git tag -d; git fetch"
-alias wv='workon venmo'
 alias phag='cat ~/.persistent_history|ag'
 alias hag='history|ag'
 alias ll='ls -la'
