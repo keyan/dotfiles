@@ -1,26 +1,28 @@
 #!/bin/bash
 
-brew install git
-brew install bash-completion
-brew install tree
-brew install python
-brew install socat
-
-pip install powerline-status
-
-git clone git@github.com:powerline/fonts.git /tmp/powerline
-/tmp/powerline/install.sh
-
-mkdir -p ~/.vim/after/ftplugin/
-
+# Bash stuff
 cp ${PWD}/git-completion.bash ~
-
 ln -sv ${PWD}/.bashrc ~
 ln -sv ${PWD}/.bash_profile ~
 ln -sv ${PWD}/.bash_completion.d ~
-ln -sv ${PWD}/.vimrc ~
 ln -sv ${PWD}/.git-prompt.sh ~
+
+# Vim setup
+mkdir -p ~/.vim/after/ftplugin/
+ln -sv ${PWD}/.vimrc ~
 ln -sv ${PWD}/c.vim ~/.vim/after/ftplugin/
 ln -sv ${PWD}/go.vim ~/.vim/after/ftplugin/
-
+# Install Vim plugins
 vim -S setup.vim
+
+# Apply Mac specific settings and packages.
+if [ "`uname -a | grep -i darwin`" ]; then
+    # Decrease key repeat speed to 0
+    defaults write NSGlobalDomain KeyRepeat -int 0
+
+    brew install git
+    brew install bash-completion
+    brew install tree
+    brew install python
+    brew install socat
+fi
