@@ -34,6 +34,7 @@ alias gtclear="git tag -l | xargs git tag -d; git fetch"
 alias phag='cat ~/.persistent_history|ag'
 alias hag='history|ag'
 alias ll='ls -la'
+alias gosrc='cd ~/.go/src/'
 
 # Let `hub` be used as `git`
 eval "$(hub alias -s)"
