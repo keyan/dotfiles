@@ -77,14 +77,16 @@ else
     YELLOW="\[\033[1;33m\]"
     GREEN="\[\033[0;32m\]"
     BLUE="\[\033[1;34m\]"
+    MAGENTA="\[\033[1;35m\]"
     LIGHT_RED="\[\033[1;31m\]"
     LIGHT_GREEN="\[\033[1;32m\]"
     CYAN="\[\033[0;36m\]"
     LIGHT_CYAN="\[\033[1;36m\]"
     WHITE="\[\033[1;37m\]"
     LIGHT_GRAY="\[\033[0;37m\]"
+    PURPLE="\e[0;35m"
     COLOR_NONE="\[\e[0m\]"
 
-    export PS1="${GREEN}\u @ \w${YELLOW}\$(__git_ps1) ${GREEN}$ ${COLOR_NONE}"
+    export PS1="${GREEN}\u ${COLOR_NONE}@ ${GREEN}\w${YELLOW}\$(__git_ps1) ${GREEN}${COLOR_NONE}$ ${COLOR_NONE}"
     export CLICOLOR=1
 fi
