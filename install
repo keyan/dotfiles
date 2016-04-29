@@ -20,6 +20,7 @@ ln -sv ${PWD}/.bash_profile ~
 ln -sv ${PWD}/.bash_completion.d ~
 ln -sv ${PWD}/.vimrc ~
 ln -sv ${PWD}/.git-prompt.sh ~
-
 ln -sv ${PWD}/c.vim ~/.vim/after/ftplugin/
 ln -sv ${PWD}/go.vim ~/.vim/after/ftplugin/
+
+vim -S setup.vim
