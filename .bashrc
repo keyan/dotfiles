@@ -41,6 +41,7 @@ alias phag='cat ~/.persistent_history|ag'
 alias hag='history|ag'
 alias ll='ls -la'
 alias gosrc='cd ~/.go/src/'
+alias wv='workon venmo'
 
 # Let `hub` be used as `git`
 eval "$(hub alias -s)"
