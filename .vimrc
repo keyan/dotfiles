@@ -221,6 +221,10 @@ let syntastic_mode_map = { 'passive_filetypes': ['html', 'less'] }
 let g:syntastic_python_checkers=['flake8', 'python']
 let g:syntastic_python_flake8_args = "--max-line-length=100"
 
+" Fugitive settings
+" -------------------------------
+let g:fugitive_github_domains = ['https://github.braintreeps.com']
+
 " Ag/grep searching settings
 " --------------------------------
 " Use The Silver Searcher

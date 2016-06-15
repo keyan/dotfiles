@@ -17,6 +17,12 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
+# Disable localization support to allow for GNU C builds on OSX
+export NO_GETTEXT=1
+
+# Git stuff
+git config --global web.browser open
+
 # Autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
@@ -40,6 +46,9 @@ alias gosrc='cd ~/.go/src/'
 eval "$(hub alias -s)"
 
 # Keeps history FOOOORRR-EEEEE-VER
+export HISTFILESIZE=50000
+export HISTSIZE=50000
+
 log_bash_persistent_history()
 {
   [[
@@ -60,7 +69,7 @@ run_on_prompt_command()
     log_bash_persistent_history
 }
 
-PROMPT_COMMAND="run_on_prompt_command"
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} run_on_prompt_command"
 
 # Powerline prompt, use custom is not installed
 # keeping this off for now because I haven't
