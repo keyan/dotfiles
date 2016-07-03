@@ -11,7 +11,9 @@ ln -sv ${PWD}/bash/.bash_completion.d ~
 ln -sv ${PWD}/bash/.git-prompt.sh ~
 
 # tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -sv ${PWD}/tmux/.tmux.conf ~
+tmux source ~/.tmux.conf
 
 # Vim setup
 mkdir -p ~/.vim/after/ftplugin/
@@ -31,4 +33,6 @@ if [ "`uname -a | grep -i darwin`" ]; then
     brew install tree
     brew install python
     brew install socat
+    # For tmux system clipboard copy.
+    brew install reattach-to-user-namespace
 fi
