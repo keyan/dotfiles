@@ -7,6 +7,9 @@ ln -sv ${PWD}/.bash_profile ~
 ln -sv ${PWD}/.bash_completion.d ~
 ln -sv ${PWD}/.git-prompt.sh ~
 
+# tmux
+ln -sv ${PWD}/.tmux.conf ~
+
 # Vim setup
 mkdir -p ~/.vim/after/ftplugin/
 ln -sv ${PWD}/.vimrc ~
