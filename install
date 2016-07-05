@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Remove old symlinks
-rm ~/{.bashrc,.bash_profile,.vimrc}
+rm ~/{.bashrc,.bash_profile,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf}
 
 # Bash stuff
-cp ${PWD}/bash/git-completion.bash ~
+ln -sv ${PWD}/bash/git-completion.bash ~
 ln -sv ${PWD}/bash/.bashrc ~
 ln -sv ${PWD}/bash/.bash_profile ~
 ln -sv ${PWD}/bash/.bash_completion.d ~
