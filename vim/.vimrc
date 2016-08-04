@@ -31,6 +31,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'rodjek/vim-puppet'
 Plugin 'keyan/onedark.vim'
+Plugin 'wlangstroth/vim-racket'
+Plugin 'oblitum/rainbow'
 
 " Turns on filetype detection and filespecific indentation.
 " Must go after the Vundle configuration above in order to use `ftdetect` dirs.
@@ -116,6 +118,8 @@ autocmd GUIEnter * set visualbell t_vb=
 syntax on
 syntax enable
 colorscheme onedark
+" Rainbow parens
+let g:rainbow_active = 1
 
 
 " custom keybindings
