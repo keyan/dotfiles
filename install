@@ -19,6 +19,7 @@ tmux source ~/.tmux.conf
 mkdir -p ~/.vim/after/ftplugin/
 ln -sv ${PWD}/vim/.vimrc ~
 ln -sv ${PWD}/vim/c.vim ~/.vim/after/ftplugin/
+ln -sv ${PWD}/vim/cpp.vim ~/.vim/after/ftplugin/
 ln -sv ${PWD}/vim/go.vim ~/.vim/after/ftplugin/
 # Install Vim plugins
 vim -S vim/setup.vim

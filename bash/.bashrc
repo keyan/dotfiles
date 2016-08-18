@@ -1,5 +1,6 @@
 export EDITOR=vim
 export GIT_EDITOR=vim
+export PATH=$PATH:~/code/oss/depot_tools
 export PATH=$PATH:~/usr/local/bin:/Applications/Racket\ v6.6/bin
 
 # Virtualenvwrapper directory
