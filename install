@@ -24,8 +24,11 @@ ln -sv ${PWD}/vim/go.vim ~/.vim/after/ftplugin/
 # Install Vim plugins
 vim -S vim/setup.vim
 
+# Python specifics
+pip install virtualenvwrapper
+
 # Apply Mac specific settings and packages.
-lf [ "`uname -a | grep -i darwin`" ]; then
+if [ "`uname -a | grep -i darwin`" ]; then
     # Decrease key repeat speed to 0
     defaults write NSGlobalDomain KeyRepeat -int 0
 
@@ -34,6 +37,7 @@ lf [ "`uname -a | grep -i darwin`" ]; then
     brew install caskroom/cask/brew-cask
 
     brew install git
+    brew install hub
     brew install bash-completion
     brew install tree
     brew install python
