@@ -29,13 +29,17 @@ pip install virtualenvwrapper
 
 # Apply Mac specific settings and packages.
 if [ "`uname -a | grep -i darwin`" ]; then
-    # Decrease key repeat speed to 0
+    # Decrease key repeat speed to 0.
     defaults write NSGlobalDomain KeyRepeat -int 0
 
     # Install homebrew.
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew install caskroom/cask/brew-cask
 
+    brew update
+
+    brew install mycli
+    brew install vim
     brew install git
     brew install hub
     brew install bash-completion
@@ -45,6 +49,13 @@ if [ "`uname -a | grep -i darwin`" ]; then
     brew install the_silver_searcher
 
     brew cask install flux
+
+    # Optional PHP setup.
+    brew tap homebrew/homebrew-php
+    brew tap homebrew/dupes
+    brew tap homebrew/versions
+    brew install php56
+    brew install homebrew/php/composer
 
     # For tmux system clipboard copy.
     brew install reattach-to-user-namespace

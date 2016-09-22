@@ -34,11 +34,13 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'keyan/onedark.vim'
 Plugin 'wlangstroth/vim-racket'
 Plugin 'oblitum/rainbow'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'joonty/vdebug'
+
 
 " Turns on filetype detection and filespecific indentation.
 " Must go after the Vundle configuration above in order to use `ftdetect` dirs.
 filetype plugin indent on
-syntax enable
 
 " General Options
 " -------------------------------------
@@ -120,7 +122,7 @@ syntax on
 syntax enable
 colorscheme onedark
 " Rainbow parens
-let g:rainbow_active = 1
+let g:rainbow_active = 0
 
 
 " custom keybindings

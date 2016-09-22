@@ -18,6 +18,9 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
+# PHP Composer PATH
+export PATH=$PATH:~/.composer/vendor/bin
+
 # Disable localization support to allow for GNU C builds on OSX
 export NO_GETTEXT=1
 
