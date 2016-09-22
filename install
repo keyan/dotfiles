@@ -10,6 +10,9 @@ ln -sv ${PWD}/bash/.bash_profile ~
 ln -sv ${PWD}/bash/.bash_completion.d ~
 ln -sv ${PWD}/bash/.git-prompt.sh ~
 
+# bash_profle is for computer specific things that shouldn't be on github
+git update-index --assume-unchanged ${PWD}/bash/.bash_profile
+
 if [ ! -d "~/bin" ]; then
     mkdir ~/bin
 fi
