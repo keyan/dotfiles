@@ -21,6 +21,9 @@ export PATH=$PATH:$GOROOT/bin
 # PHP Composer PATH
 export PATH=$PATH:~/.composer/vendor/bin
 
+# Elixir PATH
+export PATH=$PATH:/usr/local/bin/elixir
+
 # Disable localization support to allow for GNU C builds on OSX
 export NO_GETTEXT=1
 
@@ -49,6 +52,9 @@ alias wv='workon venmo'
 
 # Let `hub` be used as `git`
 eval "$(hub alias -s)"
+
+# Use Chef's ruby
+eval "$(chef shell-init bash)"
 
 # Keeps history FOOOORRR-EEEEE-VER
 export HISTFILESIZE=50000
