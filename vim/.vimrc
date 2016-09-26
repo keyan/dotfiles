@@ -36,6 +36,7 @@ Plugin 'wlangstroth/vim-racket'
 Plugin 'oblitum/rainbow'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'joonty/vdebug'
+Plugin 'elixir-lang/vim-elixir'
 
 
 " Turns on filetype detection and filespecific indentation.
