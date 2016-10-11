@@ -13,6 +13,9 @@ ln -sv ${PWD}/bash/.git-prompt.sh ~
 # bash_profle is for computer specific things that shouldn't be on github
 git update-index --assume-unchanged ${PWD}/bash/.bash_profile
 
+# Assume the default remote and current branch are my upstream.
+git config --global push.default current
+
 if [ ! -d "~/bin" ]; then
     mkdir ~/bin
 fi
