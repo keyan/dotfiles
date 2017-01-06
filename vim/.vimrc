@@ -29,6 +29,7 @@ Plugin 'rbgrouleff/bclose.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'scrooloose/nerdtree'
 Plugin 'rodjek/vim-puppet'
 Plugin 'keyan/onedark.vim'
@@ -37,6 +38,7 @@ Plugin 'oblitum/rainbow'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'joonty/vdebug'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'hashivim/vim-terraform'
 
 
 " Turns on filetype detection and filespecific indentation.
