@@ -126,6 +126,8 @@ syntax enable
 colorscheme onedark
 " Rainbow parens
 let g:rainbow_active = 0
+au BufReadPost Jenkinsfile set syntax=groovy
+au BufReadPost Jenkinsfile set filetype=groovy
 
 
 " custom keybindings

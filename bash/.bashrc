@@ -24,6 +24,9 @@ export PATH=$PATH:~/.composer/vendor/bin
 # Elixir PATH
 export PATH=$PATH:/usr/local/bin/elixir
 
+# Terraform PATH
+export PATH=$PATH:/usr/local/terraform/bin
+
 # Disable localization support to allow for GNU C builds on OSX
 export NO_GETTEXT=1
 
@@ -41,14 +44,13 @@ fi
 alias gl='git log'
 alias gb='git branch'
 alias gs='git status'
-alias gc='git checkout'
 alias gbclear="git branch --merged | grep -v '\*\|master' | xargs -n 1 git branch -d"
 alias gtclear="git tag -l | xargs git tag -d; git fetch"
 alias phag='cat ~/.persistent_history|ag'
 alias hag='history|ag'
 alias ll='ls -la'
 alias gosrc='cd ~/.go/src/'
-alias wv='workon venmo'
+alias tf='terraform'
 
 # Let `hub` be used as `git`
 eval "$(hub alias -s)"
