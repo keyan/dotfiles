@@ -44,6 +44,7 @@ fi
 alias gl='git log'
 alias gb='git branch'
 alias gs='git status'
+alias gc='git checkout'
 alias gbclear="git branch --merged | grep -v '\*\|master' | xargs -n 1 git branch -d"
 alias gtclear="git tag -l | xargs git tag -d; git fetch"
 alias phag='cat ~/.persistent_history|ag'
