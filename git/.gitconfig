@@ -1,0 +1,15 @@
+[web]
+	browser = open
+[user]
+	name = Keyan Pishdadian
+	email = kpishdadian@gmail.com
+[push]
+	default = current
+[help]
+        autocorrect=1
+[alias]
+    co = checkout
+    cob = checkout -b
+    b = branch
+    amend = commit --amend && git push -f
+    save = !git add -A && git commit -m 'SAVEPOINT'
