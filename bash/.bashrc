@@ -43,6 +43,7 @@ fi
 
 alias gl='git log'
 alias gb='git branch'
+alias gbb="git for-each-ref --sort=-\committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias gs='git status'
 alias gc='git checkout'
 alias gbclear="git branch --merged | grep -v '\*\|master' | xargs -n 1 git branch -d"
