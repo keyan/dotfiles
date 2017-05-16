@@ -16,7 +16,7 @@ git update-index --assume-unchanged ${PWD}/bash/.bash_profile
 # Assume the default remote and current branch are my upstream.
 git config --global push.default current
 
-if [ ! -d "~/bin" ]; then
+if [ ! -d ~/bin ]; then
     mkdir ~/bin
 fi
 

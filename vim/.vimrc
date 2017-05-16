@@ -166,9 +166,9 @@ inoremap jk <ESC>
 " allow writing root files when forgetting to sudo
 cmap w!! w !sudo tee % >/dev/null<CR>:e!<CR><CR>
 
-" keep macro window from popping up
-map q: :q
-map q <Nop>
+" " keep macro window from popping up
+" map q: :q
+" map q <Nop>
 
 " I always mistype :wq
 command Wq wq
