@@ -1,33 +1,33 @@
 #!/bin/bash
 
 # Remove old symlinks
-rm ~/{.bashrc,.bash_profile,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf}
+rm ~/{.bashrc,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf}
 
 # Bash stuff
-ln -sv ${PWD}/bash/git-completion.bash ~
-ln -sv ${PWD}/bash/.bashrc ~
-ln -sv ${PWD}/bash/.bash_profile ~
-ln -sv ${PWD}/bash/.bash_completion.d ~
-ln -sv ${PWD}/bash/.git-prompt.sh ~
+ln -sv ${PWD}/bash/* ~
+
 
 # bash_profle is for computer specific things that shouldn't be on github
 git update-index --assume-unchanged ${PWD}/bash/.bash_profile
 
+## Git settings
+ln -sv ${PWD}/git/.gitconfig ~
 # Assume the default remote and current branch are my upstream.
 git config --global push.default current
 
+## Custom scripts
 if [ ! -d ~/bin ]; then
     mkdir ~/bin
 fi
 
 ln -sv ${PWD}/scripts/* ~/bin/
 
-# tmux
+## tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -sv ${PWD}/tmux/.tmux.conf ~
 tmux source ~/.tmux.conf
 
-# Vim setup
+## Vim setup
 mkdir -p ~/.vim/after/ftplugin/
 ln -sv ${PWD}/vim/.vimrc ~
 ln -sv ${PWD}/vim/c.vim ~/.vim/after/ftplugin/
@@ -37,10 +37,10 @@ ln -sv ${PWD}/vim/ruby.vim ~/.vim/after/ftplugin/
 # Install Vim plugins
 vim -S vim/setup.vim
 
-# Python specifics
+## Python specifics
 pip install virtualenvwrapper
 
-# Apply Mac specific settings and packages.
+## Apply Mac specific settings and packages.
 if [ "`uname -a | grep -i darwin`" ]; then
     # Decrease key repeat speed to 0.
     defaults write NSGlobalDomain KeyRepeat -int 0
