@@ -145,6 +145,9 @@ cabbrev bd Bclose
 " Add SyntasticCheck here as a hotfix unitl I can debug why autosave is broken
 nnoremap <Leader>w :w<CR> :SyntasticCheck<CR>
 
+" Run spellcheck and highlight unknown words
+:command Spellcheck setlocal spell spelllang=en_us
+
 " v to expand selection, <C-v> to reduce
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)

@@ -11,5 +11,5 @@
     co = checkout
     cob = checkout -b
     b = branch
-    amend = commit --amend && git push -f
+    amend = commit --amend --no-edit
     save = !git add -A && git commit -m 'SAVEPOINT'
