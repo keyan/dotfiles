@@ -39,6 +39,7 @@ Plugin 'StanAngeloff/php.vim'
 Plugin 'joonty/vdebug'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'hashivim/vim-terraform'
+Plugin 'jimenezrick/vimerl'
 
 
 " Turns on filetype detection and filespecific indentation.
