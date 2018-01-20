@@ -1,13 +1,19 @@
 #!/bin/bash
 
-# Remove old symlinks
-rm ~/{.bashrc,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf}
+REMOVE_EXISTING_CONFIGS=$1
 
-# Bash stuff
+if [ $REMOVE_EXISTING_CONFIGS == 1 ]; then
+    echo 'Storing backups for configuration files to /tmp/dotfile_backups/'
+    cp ~/{.bashrc,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf} /tmp/dotfile_backups/
+
+    echo 'Removing existing configuration files!'
+    rm ~/{.bashrc,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf}
+fi
+
+## Bash stuff
 ln -sv ${PWD}/bash/* ~
 
-
-# bash_profle is for computer specific things that shouldn't be on github
+# bash_profle is for machine specific things that shouldn't be on github
 git update-index --assume-unchanged ${PWD}/bash/.bash_profile
 
 ## Git settings
@@ -19,7 +25,6 @@ git config --global push.default current
 if [ ! -d ~/bin ]; then
     mkdir ~/bin
 fi
-
 ln -sv ${PWD}/scripts/* ~/bin/
 
 ## tmux
@@ -27,18 +32,16 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -sv ${PWD}/tmux/.tmux.conf ~
 tmux source ~/.tmux.conf
 
-## Vim setup
-mkdir -p ~/.vim/after/ftplugin/
-ln -sv ${PWD}/vim/.vimrc ~
-ln -sv ${PWD}/vim/c.vim ~/.vim/after/ftplugin/
-ln -sv ${PWD}/vim/cpp.vim ~/.vim/after/ftplugin/
-ln -sv ${PWD}/vim/go.vim ~/.vim/after/ftplugin/
-ln -sv ${PWD}/vim/ruby.vim ~/.vim/after/ftplugin/
-# Install Vim plugins
-vim -S vim/setup.vim
-
 ## Python specifics
 pip install virtualenvwrapper
+
+## Vim setup
+ln -sv ${PWD}/vim/.vimrc ~
+# Filetype specific formatting rules.
+mkdir -p ~/.vim/after/ftplugin/
+ln -sv ${PWD}/vim/* ~/.vim/after/ftplugin/
+# Install Vim plugins
+vim -S vim/setup.vim
 
 ## Apply Mac specific settings and packages.
 if [ "`uname -a | grep -i darwin`" ]; then
@@ -72,4 +75,7 @@ if [ "`uname -a | grep -i darwin`" ]; then
 
     # For tmux system clipboard copy.
     brew install reattach-to-user-namespace
+
+    # Don't show "last login" message.
+    touch ~/.hushlogin
 fi
