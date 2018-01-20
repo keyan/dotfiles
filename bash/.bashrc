@@ -1,7 +1,5 @@
 export EDITOR=vim
 export GIT_EDITOR=vim
-export PATH=$PATH:~/code/oss/depot_tools
-export PATH=$PATH:~/usr/local/bin:/Applications/Racket\ v6.6/bin
 
 # Virtualenvwrapper directory
 export WORKON_HOME=$HOME/Envs
@@ -10,16 +8,12 @@ export WORKON_HOME=$HOME/Envs
 export PATH=$PATH:~/bin
 source ~/git-completion.bash
 source ~/.git-prompt.sh
-source /usr/local/bin/virtualenvwrapper.sh
 
 # go path
 export GOPATH=$HOME/.go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
-
-# PHP Composer PATH
-export PATH=$PATH:~/.composer/vendor/bin
 
 # Elixir PATH
 export PATH=$PATH:/usr/local/bin/elixir
@@ -30,13 +24,17 @@ export NO_GETTEXT=1
 # Git stuff
 git config --global web.browser open
 
-# Autojump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+# # Autojump
+# [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 # Git completion
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
+# if [ -f `brew --prefix`/etc/bash_completion ]; then
+#     . `brew --prefix`/etc/bash_completion
+# fi
+
+# Loading virtualenvwrapper on terminal startup is way too slow, instead load it on demand
+# when it is actually needed (which isn't very often for me these days).
+alias venv_on='source /usr/local/bin/virtualenvwrapper.sh'
 
 alias gl='git log'
 alias gb='git branch'
@@ -51,9 +49,6 @@ alias tf='terraform'
 
 # Let `hub` be used as `git`
 eval "$(hub alias -s)"
-
-# Use Chef's ruby
-eval "$(chef shell-init bash)"
 
 # Keeps history FOOOORRR-EEEEE-VER
 export HISTFILESIZE=50000
