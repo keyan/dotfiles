@@ -2,6 +2,8 @@
 
 REMOVE_EXISTING_CONFIGS=$1
 
+touch ~/{.bashrc,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf}
+
 if [ $REMOVE_EXISTING_CONFIGS == 1 ]; then
     echo 'Storing backups for configuration files to /tmp/dotfile_backups/'
     cp ~/{.bashrc,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf} /tmp/dotfile_backups/
@@ -46,7 +48,8 @@ vim -S vim/setup.vim
 ## Apply Mac specific settings and packages.
 if [ "`uname -a | grep -i darwin`" ]; then
     # Decrease key repeat speed to 0.
-    defaults write NSGlobalDomain KeyRepeat -int 0
+    defaults write NSGlobalDomain KeyRepeat -int 1
+    defaults write NSGlobalDomain InitialKeyRepeat -int 20
 
     # Install homebrew.
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
