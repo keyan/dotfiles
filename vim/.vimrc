@@ -40,6 +40,7 @@ Plugin 'joonty/vdebug'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'hashivim/vim-terraform'
 Plugin 'jimenezrick/vimerl'
+Plugin 'tpope/vim-rhubarb'
 
 
 " Turns on filetype detection and filespecific indentation.
@@ -235,11 +236,11 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_enable_signs=1
 let syntastic_mode_map = { 'passive_filetypes': ['html', 'less'] }
 let g:syntastic_python_checkers=['flake8', 'python']
-let g:syntastic_python_flake8_args = "--max-line-length=100"
+let g:syntastic_python_flake8_args = "--max-line-length=120"
 
 " Fugitive settings
 " -------------------------------
-let g:fugitive_github_domains = ['https://github.braintreeps.com']
+" let g:fugitive_github_domains = ['https://github.braintreeps.com']
 
 " Ag/grep searching settings
 " --------------------------------
