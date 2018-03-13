@@ -1,0 +1,36 @@
+#!/usr/local/bin/python
+
+from __future__ import print_function
+
+from sys import argv
+
+
+def build_transit_query_string(origin, destination):
+    """
+    Input format is e.g.:
+    https://www.google.com/maps/dir/47.6047499,-122.3364718/47.5505631,-122.3874769/
+    """
+    origin_lat, origin_lng = origin
+    destination_lat, destination_lng = destination
+
+    return ('/v1/trips?'
+            'origin_lat={origin_lat}&origin_lng={origin_lng}&'
+            'destination_lat={destination_lat}&destination_lng={destination_lng}').format(origin_lat=origin_lat,
+                                                                                          origin_lng=origin_lng,
+                                                                                          destination_lat=destination_lat,
+                                                                                          destination_lng=destination_lng)
+
+
+def parse_origin_destination(url):
+    url = url.strip('/')
+    return [place.split(',') for place in url.split('/')[-2:]]
+
+
+if __name__ == '__main__':
+    if argv[1] == 'help':
+        print('Usage: transit_query https://www.google.com/maps/dir/<origin lat/long>/<destination lat/long>')
+        exit(0)
+
+    input_url = argv[1]
+    origin, destination = parse_origin_destination(input_url)
+    print(build_transit_query_string(origin, destination))

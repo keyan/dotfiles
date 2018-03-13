@@ -9,14 +9,16 @@ export PATH=$PATH:~/bin
 source ~/git-completion.bash
 source ~/.git-prompt.sh
 
-# go path
+## PATH setup
+# Golang
 export GOPATH=$HOME/.go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
-
-# Elixir PATH
+# Elixir
 export PATH=$PATH:/usr/local/bin/elixir
+# Python
+export PATH="/usr/local/opt/python@2/bin:$PATH"
 
 # Disable localization support to allow for GNU C builds on OSX
 export NO_GETTEXT=1
