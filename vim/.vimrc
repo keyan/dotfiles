@@ -41,6 +41,7 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'hashivim/vim-terraform'
 Plugin 'jimenezrick/vimerl'
 Plugin 'tpope/vim-rhubarb'
+Plugin 'heavenshell/vim-pydocstring'
 
 
 " Turns on filetype detection and filespecific indentation.
@@ -107,6 +108,14 @@ set ignorecase                        " case-insensitive search
 set smartcase                         " upper-case sensitive search
 set gdefault
 set showmatch                         " show matching brackets (),{},[]
+
+
+" Ctags
+" -------------------------------------
+" Move up from the pwd looking for the tags file
+set tags=./tags,tags;$HOME
+" Open Ctags definition in a new vertical split to the right
+map <C-\> :vsp <CR><C-w><S-l> :exec("tag ".expand("<cword>"))<CR>
 
 
 "  wrap like other editors
@@ -190,6 +199,9 @@ map <leader>s :sp<CR>
 imap <C-F> {<CR>}<C-O>O
 " puppet declaration braces, CTRL+D
 imap <C-D> {<CR>}<ESC>kA<Space>'
+
+" Split comma delimited line into multiline
+command Csplit :s/,/,\r/ | :noh
 
 " auto commands
 " -------------------------------------
