@@ -1,52 +1,46 @@
 #!/bin/bash
 
-REMOVE_EXISTING_CONFIGS=$1
-
-touch ~/{.bashrc,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf}
-
-if [ $REMOVE_EXISTING_CONFIGS == 1 ]; then
+read -r -p "Remove existing configs? [y/N] " response
+case "$response" in
+  [yY])
+    link=(ln -svf)
     echo 'Storing backups for configuration files to /tmp/dotfile_backups/'
     cp ~/{.bashrc,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf} /tmp/dotfile_backups/
+    ;;
+  *)
+    link=(ln -sv)
+    ;;
+esac
 
-    echo 'Removing existing configuration files!'
-    rm ~/{.bashrc,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf}
-fi
+mkdir -p ~/bin
+mkdir -p ~/.vim/after/ftplugin/  # Filetype specific formatting rules
 
-## Bash stuff
-ln -sv ${PWD}/bash/* ~
-
+git clone -q https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux source ~/.tmux.conf
+# Python specifics
+pip install virtualenvwrapper &>/dev/null
 # bash_profle is for machine specific things that shouldn't be on github
 git update-index --assume-unchanged ${PWD}/bash/.bash_profile
 
-## Git settings
-ln -sv ${PWD}/git/.gitconfig ~
-# Assume the default remote and current branch are my upstream.
-git config --global push.default current
-
-## Custom scripts
-if [ ! -d ~/bin ]; then
-    mkdir ~/bin
-fi
-ln -sv ${PWD}/scripts/* ~/bin/
-
-## tmux
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-ln -sv ${PWD}/tmux/.tmux.conf ~
-tmux source ~/.tmux.conf
-
-## Python specifics
-pip install virtualenvwrapper
-
-## Vim setup
-ln -sv ${PWD}/vim/.vimrc ~
-# Filetype specific formatting rules.
-mkdir -p ~/.vim/after/ftplugin/
-ln -sv ${PWD}/vim/* ~/.vim/after/ftplugin/
-# Install Vim plugins
-vim -S vim/setup.vim
+"${link[@]}" ${PWD}/bash/* ~
+"${link[@]}" ${PWD}/git/* ~
+"${link[@]}" ${PWD}/scripts/* ~/bin
+"${link[@]}" ${PWD}/vim/.vimrc ~
+"${link[@]}" ${PWD}/vim/* ~/.vim/after/ftplugin
+"${link[@]}" ${PWD}/tmux/.tmux.conf ~
 
 ## Apply Mac specific settings and packages.
 if [ "`uname -a | grep -i darwin`" ]; then
+    read -r -p "Install homebrew packages? [y/N] " response
+    case "$response" in
+      [yY])
+        :
+        ;;
+      *)
+        exit 0
+        ;;
+    esac
+
     # Decrease key repeat speed to 0.
     defaults write NSGlobalDomain KeyRepeat -int 1
     defaults write NSGlobalDomain InitialKeyRepeat -int 20
