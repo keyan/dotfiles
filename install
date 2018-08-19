@@ -23,11 +23,15 @@ pip install virtualenvwrapper &>/dev/null
 git update-index --assume-unchanged ${PWD}/bash/.bash_profile
 
 "${link[@]}" ${PWD}/bash/* ~
+"${link[@]}" ${PWD}/bash/.* ~
 "${link[@]}" ${PWD}/git/* ~
+"${link[@]}" ${PWD}/git/.* ~
 "${link[@]}" ${PWD}/scripts/* ~/bin
 "${link[@]}" ${PWD}/vim/.vimrc ~
 "${link[@]}" ${PWD}/vim/* ~/.vim/after/ftplugin
 "${link[@]}" ${PWD}/tmux/.tmux.conf ~
+
+vim -S vim/setup.vim
 
 ## Apply Mac specific settings and packages.
 if [ "`uname -a | grep -i darwin`" ]; then
@@ -51,7 +55,6 @@ if [ "`uname -a | grep -i darwin`" ]; then
 
     brew update
 
-    brew install mycli
     brew install vim
     brew install git
     brew install hub
@@ -63,13 +66,6 @@ if [ "`uname -a | grep -i darwin`" ]; then
     brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
     brew cask install flux
-
-    # Optional PHP setup.
-    brew tap homebrew/homebrew-php
-    brew tap homebrew/dupes
-    brew tap homebrew/versions
-    brew install php56
-    brew install homebrew/php/composer
 
     # For tmux system clipboard copy.
     brew install reattach-to-user-namespace
