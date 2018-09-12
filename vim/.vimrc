@@ -31,17 +31,13 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'scrooloose/nerdtree'
-Plugin 'rodjek/vim-puppet'
 Plugin 'joshdick/onedark.vim'
-Plugin 'wlangstroth/vim-racket'
 Plugin 'oblitum/rainbow'
-Plugin 'StanAngeloff/php.vim'
-Plugin 'joonty/vdebug'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'hashivim/vim-terraform'
-Plugin 'jimenezrick/vimerl'
 Plugin 'tpope/vim-rhubarb'
-Plugin 'heavenshell/vim-pydocstring'
+" Plugin 'jimenezrick/vimerl'
+" Plugin 'tpope/vim-abolish'
+" Plugin 'davidhalter/jedi-vim'
+" Plugin 'ervandew/supertab'
 
 
 " Turns on filetype detection and filespecific indentation.
@@ -137,8 +133,6 @@ syntax enable
 colorscheme onedark
 " Rainbow parens
 let g:rainbow_active = 0
-au BufReadPost Jenkinsfile set syntax=groovy
-au BufReadPost Jenkinsfile set filetype=groovy
 
 
 " custom keybindings
@@ -180,10 +174,6 @@ inoremap jk <ESC>
 " allow writing root files when forgetting to sudo
 cmap w!! w !sudo tee % >/dev/null<CR>:e!<CR><CR>
 
-" " keep macro window from popping up
-" map q: :q
-" map q <Nop>
-
 " I always mistype :wq
 command Wq wq
 command WQ wq
@@ -197,11 +187,7 @@ map <leader>s :sp<CR>
 
 " quick braces, CTRL+F for {}
 imap <C-F> {<CR>}<C-O>O
-" puppet declaration braces, CTRL+D
-imap <C-D> {<CR>}<ESC>kA<Space>'
 
-" Split comma delimited line into multiline
-command Csplit :s/,/,\r/ | :noh
 
 " auto commands
 " -------------------------------------
@@ -220,12 +206,11 @@ au FocusLost * :wa
 " ignore filetypes for auto complete
 set wildignore+=*.lib,*.dll,*.exe,*.o,*.obj,*.pyc,*.pyo,*.png,*.gif,*.jpg,*.jpeg,*.bmp,*.tiff
 
-" For ocp-indent (OCaml indentation)
-autocmd FileType ocaml source /Users/$USER/.opam/system/share/ocp-indent/vim/indent/ocaml.vim
 
 " Ctrl-P Settings
 " -------------------------------------
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 
 " Airline Settings
 " ---------------------------------
@@ -234,6 +219,7 @@ let g:airline#extensions#whitespace#enabled = 1
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tabs = 1
+
 
 " Syntastic settings
 " ----------------------------------
@@ -247,12 +233,17 @@ let g:syntastic_auto_loc_list = 0
 " let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs=1
 let syntastic_mode_map = { 'passive_filetypes': ['html', 'less'] }
-let g:syntastic_python_checkers=['flake8', 'python']
+let g:syntastic_python_checkers=['flake8', 'python', 'python3']
 let g:syntastic_python_flake8_args = "--max-line-length=120"
+" Switch between linters for python2/3
+function Py2()
+  let g:syntastic_python_python_exec = '/usr/local/bin/python2.7'
+endfunction
 
-" Fugitive settings
-" -------------------------------
-" let g:fugitive_github_domains = ['https://github.braintreeps.com']
+function Py3()
+  let g:syntastic_python_python_exec = '/usr/local/bin/python3.7'
+endfunction
+
 
 " Ag/grep searching settings
 " --------------------------------
@@ -273,3 +264,12 @@ endif
 
 " open line in quickfix window in new vertical split
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
+
+
+" Temporary hacks
+" --------------------------------
+" Regardless of installed plugins, silently execute python3 once on the top of your vimrc:
+
+if has('python3')
+  silent! python3 1
+endif
