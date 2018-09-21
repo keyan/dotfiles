@@ -3,6 +3,7 @@ export GIT_EDITOR=vim
 
 # Virtualenvwrapper directory
 export WORKON_HOME=$HOME/Envs
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
 # Scripts
 export PATH=$PATH:~/bin
@@ -18,7 +19,7 @@ export PATH=$PATH:$GOROOT/bin
 # Elixir
 export PATH=$PATH:/usr/local/bin/elixir
 # Python
-export PATH="/usr/local/opt/python@2/bin:$PATH"
+export PATH="/usr/local/bin/python3:/usr/local/opt/python@2/bin:$PATH"
 
 # Disable localization support to allow for GNU C builds on OSX
 export NO_GETTEXT=1
@@ -41,6 +42,7 @@ alias venv_on='source /usr/local/bin/virtualenvwrapper.sh'
 alias gl='git log'
 alias gb='git branch'
 alias gbb="git for-each-ref --sort=-\committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+alias lines_by_author="git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr"
 alias gs='git status'
 alias gc='git checkout'
 alias gbclear="git branch | grep -v '\*\|master' | xargs -n 1 git branch -D"
@@ -75,3 +77,4 @@ COLOR_NONE="\[\e[0m\]"
 
 export PS1="${GREEN}\u ${COLOR_NONE}@ ${GREEN}\w${YELLOW}\$(__git_ps1) ${GREEN}${COLOR_NONE}$ ${COLOR_NONE}"
 export CLICOLOR=1
+source '/Users/kpishdadian/src/blessclient/lyftprofile' # bless ssh alias
