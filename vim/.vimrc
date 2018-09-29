@@ -233,6 +233,8 @@ let g:syntastic_auto_loc_list = 0
 " let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs=1
 let syntastic_mode_map = { 'passive_filetypes': ['html', 'less'] }
+
+" Python
 let g:syntastic_python_checkers=['flake8', 'python', 'python3']
 let g:syntastic_python_flake8_args = "--max-line-length=120"
 " Switch between linters for python2/3
@@ -244,6 +246,10 @@ function Py3()
   let g:syntastic_python_python_exec = '/usr/local/bin/python3.7'
 endfunction
 
+" CPP
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+let g:syntastic_cpp_config_file = '.syntastic_cpp_config'
 
 " Ag/grep searching settings
 " --------------------------------
