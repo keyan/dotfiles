@@ -237,6 +237,7 @@ let syntastic_mode_map = { 'passive_filetypes': ['html', 'less'] }
 " Python
 let g:syntastic_python_checkers=['flake8', 'python', 'python3']
 let g:syntastic_python_flake8_args = "--max-line-length=120"
+let g:syntastic_python_python_exec = '/usr/local/bin/python3.7'
 " Switch between linters for python2/3
 function Py2()
   let g:syntastic_python_python_exec = '/usr/local/bin/python2.7'
