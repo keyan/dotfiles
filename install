@@ -30,6 +30,7 @@ git update-index --assume-unchanged ${PWD}/bash/.bash_profile
 "${link[@]}" ${PWD}/vim/.vimrc ~
 "${link[@]}" ${PWD}/vim/* ~/.vim/after/ftplugin
 "${link[@]}" ${PWD}/tmux/.tmux.conf ~
+"${link[@]}" ${PWD}/karabiner/karabiner.json ~/.config/karabiner/
 
 vim -S vim/setup.vim
 
