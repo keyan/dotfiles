@@ -8,7 +8,6 @@
 [help]
         autocorrect=1
 [alias]
-    co = checkout
     cob = checkout -b
     b = branch
     amend = commit --amend --no-edit
