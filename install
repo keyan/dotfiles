@@ -23,7 +23,7 @@ pip install virtualenvwrapper &>/dev/null
 git update-index --assume-unchanged ${PWD}/bash/.bash_profile
 
 "${link[@]}" ${PWD}/bash/* ~
-"${link[@]}" ${PWD}/bash/.* ~
+"${link[@]}" ${PWD}/bash/.bashrc ~
 "${link[@]}" ${PWD}/git/* ~
 "${link[@]}" ${PWD}/git/.* ~
 "${link[@]}" ${PWD}/scripts/* ~/bin

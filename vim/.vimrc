@@ -34,10 +34,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'joshdick/onedark.vim'
 Plugin 'oblitum/rainbow'
 Plugin 'tpope/vim-rhubarb'
+Plugin 'tpope/vim-abolish'
+Plugin 'ervandew/supertab'
 " Plugin 'jimenezrick/vimerl'
-" Plugin 'tpope/vim-abolish'
 " Plugin 'davidhalter/jedi-vim'
-" Plugin 'ervandew/supertab'
 
 
 " Turns on filetype detection and filespecific indentation.
