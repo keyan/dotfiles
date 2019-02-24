@@ -37,7 +37,6 @@ Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-abolish'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
-" Plugin 'davidhalter/jedi-vim'
 
 
 " Turns on filetype detection and filespecific indentation.
@@ -134,6 +133,14 @@ colorscheme onedark
 " Rainbow parens
 let g:rainbow_active = 0
 
+" code completion
+" -------------------------------------
+" Override supertab's default and use omni-completion when possible
+autocmd FileType *
+\ if &omnifunc != '' |
+\   call SuperTabChain(&omnifunc, "<c-p>") |
+\ endif
+
 
 " custom keybindings
 " -------------------------------------
@@ -188,6 +195,12 @@ map <leader>s :sp<CR>
 " quick braces, CTRL+F for {}
 imap <C-F> {<CR>}<C-O>O
 
+" Move up and down in autocomplete with <c-j> and <c-k>
+inoremap <expr> <c-j> ("\<C-n>")
+inoremap <expr> <c-k> ("\<C-p>")
+
+" Close the preview window easily
+map <leader>p :pclose<CR>
 
 " auto commands
 " -------------------------------------
