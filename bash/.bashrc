@@ -76,4 +76,3 @@ COLOR_NONE="\[\e[0m\]"
 
 export PS1="${GREEN}\u ${COLOR_NONE}@ ${GREEN}\w${YELLOW}\$(__git_ps1) ${GREEN}${COLOR_NONE}$ ${COLOR_NONE}"
 export CLICOLOR=1
-source '/Users/kpishdadian/src/blessclient/lyftprofile' # bless ssh alias
