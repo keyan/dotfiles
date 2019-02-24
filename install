@@ -5,7 +5,7 @@ case "$response" in
   [yY])
     link=(ln -svf)
     echo 'Storing backups for configuration files to /tmp/dotfile_backups/'
-    cp ~/{.bashrc,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf} /tmp/dotfile_backups/
+    cp ~/{.bashrc,.bash_profile,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf} /tmp/dotfile_backups/
     ;;
   *)
     link=(ln -sv)
@@ -24,6 +24,7 @@ git update-index --assume-unchanged ${PWD}/bash/.bash_profile
 
 "${link[@]}" ${PWD}/bash/* ~
 "${link[@]}" ${PWD}/bash/.bashrc ~
+"${link[@]}" ${PWD}/bash/.git-prompt.sh ~
 "${link[@]}" ${PWD}/git/* ~
 "${link[@]}" ${PWD}/git/.* ~
 "${link[@]}" ${PWD}/scripts/* ~/bin
