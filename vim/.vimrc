@@ -36,7 +36,7 @@ Plugin 'oblitum/rainbow'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-abolish'
 Plugin 'ervandew/supertab'
-" Plugin 'jimenezrick/vimerl'
+Plugin 'fatih/vim-go'
 " Plugin 'davidhalter/jedi-vim'
 
 

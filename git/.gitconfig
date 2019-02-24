@@ -14,5 +14,3 @@
     save = !git add -A && git commit -m 'SAVEPOINT'
     fixup = "!f() { git commit --fixup=\"$1\" && git rebase --autosquash -i \"$1\"~1; }; f"
     ds = diff --staged
-[commit]
-	gpgsign = true
