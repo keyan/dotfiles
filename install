@@ -12,6 +12,36 @@ case "$response" in
     ;;
 esac
 
+read -r -p "Add slack dark mode override? [y/N] " response
+case "$response" in
+  [yY])
+    # https://github.com/laCour/slack-night-mode/issues/73#issuecomment-287467332
+    tee -a /Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/ssb-interop.js >/dev/null << END
+    document.addEventListener('DOMContentLoaded', function() {
+      $.ajax({
+        url: 'https://gist.githubusercontent.com/keyan/f69d1c2143bcac445b2a3bf4ebb87942/raw/dark.css',
+        success: function(css) {
+          \$("<style></style>").appendTo('head').html(css);
+        }
+      });
+    });
+END
+    ;;
+  *)
+    :
+    ;;
+esac
+
+read -r -p "Setup dotfiles? [y/N] " response
+case "$response" in
+  [nN])
+    exit 0
+    ;;
+  *)
+    :
+    ;;
+esac
+
 mkdir -p ~/bin
 mkdir -p ~/.vim/after/ftplugin/  # Filetype specific formatting rules
 
