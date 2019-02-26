@@ -1,0 +1,13 @@
+[MESSAGES CONTROL]
+
+disable=
+    no-self-use,
+    too-few-public-methods,
+    fixme,
+    invalid-name,
+    missing-docstring,
+    import-error,
+    line-too-long,
+    bad-continuation,
+    len-as-condition,
+    no-else-return

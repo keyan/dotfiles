@@ -55,6 +55,7 @@ git update-index --assume-unchanged ${PWD}/bash/.bash_profile
 "${link[@]}" ${PWD}/bash/* ~
 "${link[@]}" ${PWD}/bash/.bashrc ~
 "${link[@]}" ${PWD}/bash/.git-prompt.sh ~
+"${link[@]}" ${PWD}/misc_configs/.pylintrc ~
 "${link[@]}" ${PWD}/git/* ~
 "${link[@]}" ${PWD}/git/.* ~
 "${link[@]}" ${PWD}/scripts/* ~/bin
@@ -78,8 +79,10 @@ if [ "`uname -a | grep -i darwin`" ]; then
     esac
 
     # Decrease key repeat speed to 0.
+    defaults write NSGlobalDomain InitialKeyRepeat -int 10
+    defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
     defaults write NSGlobalDomain KeyRepeat -int 1
-    defaults write NSGlobalDomain InitialKeyRepeat -int 20
+    defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 
     # Install homebrew.
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
