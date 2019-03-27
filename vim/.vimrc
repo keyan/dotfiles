@@ -93,6 +93,10 @@ set shiftwidth=4
 set softtabstop=4
 set autoindent                        " auto indents next new line
 set shiftround                        " better tab aligning
+set smartindent
+
+" Indent only once after an open paren, see :help ft-python-indent
+let g:pyindent_open_paren = '&sw'
 
 
 " searching
