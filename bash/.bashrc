@@ -19,6 +19,8 @@ export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:/usr/local/bin/elixir
 # Python
 export PATH="/usr/local/bin/python3:/usr/local/opt/python@2/bin:$PATH"
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Disable localization support to allow for GNU C builds on OSX
 export NO_GETTEXT=1

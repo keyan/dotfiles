@@ -38,11 +38,13 @@ Plugin 'tpope/vim-abolish'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'vim-python/python-syntax'
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
+Plugin 'leafgarland/typescript-vim'
 
 " Turns on filetype detection and filespecific indentation.
 " Must go after the Vundle configuration above in order to use `ftdetect` dirs.
 filetype plugin indent on
+filetype plugin on
 
 " General Options
 " -------------------------------------
@@ -297,6 +299,16 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_cpp_config_file = '.syntastic_cpp_config'
 
+" Typescript
+let g:typescript_indent_disable = 1
+
+" Golang
+" Use godef, not guru for definition search
+let g:go_def_mode = 'godef'
+" Pass additional options to the gofmt on-save command
+let g:go_fmt_options = {'gofmt': '-s'}
+
+
 " Ag/grep searching settings
 " --------------------------------
 " Use The Silver Searcher
@@ -307,8 +319,9 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""' " Use in CtrlP
-  " bind K to grep word under cursor
+  " bind K and M to grep word under cursor
   nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+  nnoremap M :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
   " bind \ (backward slash) to grep shortcut
   command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
   nnoremap \ :Ag<SPACE>
