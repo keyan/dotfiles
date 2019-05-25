@@ -12,11 +12,9 @@ source ~/.git-prompt.sh
 
 ## PATH setup
 # Golang
+export GOROOT=$(go env GOROOT)
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-# Elixir
-export PATH=$PATH:/usr/local/bin/elixir
 # Python
 export PATH="/usr/local/bin/python3:/usr/local/opt/python@2/bin:$PATH"
 # Rust

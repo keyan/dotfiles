@@ -186,10 +186,11 @@ map <leader>b :Bclose<CR>
 
 " Save quicker
 " Add SyntasticCheck here as a hotfix unitl I can debug why autosave is broken
-nnoremap <Leader>w :w<CR> :SyntasticCheck<CR>
+nnoremap <Leader>w :w<CR>
 " Fast execution of pylint, so I don't include it in the global check list and
 " slow down saves too much.
-noremap <Leader>l :w<CR> :SyntasticCheck pylint<CR>
+" noremap <Leader>l :SyntasticCheck pylint<CR>
+noremap <Leader>l :SyntasticCheck<CR>
 
 " Run spellcheck and highlight unknown words
 :command Spellcheck setlocal spell spelllang=en_us
@@ -275,11 +276,13 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
+let g:syntastic_auto_loc_list = 1
 " I want this but it is sooooo slow
 " let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs=1
-let syntastic_mode_map = { 'passive_filetypes': ['html', 'less'] }
+let syntastic_mode_map = {
+    \ 'mode': 'active',
+    \ 'passive_filetypes': ['html', 'less', 'go']}
 
 " Python
 let g:syntastic_python_checkers=['flake8', 'python', 'python3']
