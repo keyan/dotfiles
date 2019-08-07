@@ -164,10 +164,11 @@ colorscheme onedark
 " code completion
 " -------------------------------------
 " Override supertab's default and use omni-completion when possible
-autocmd FileType *
-\ if &omnifunc != '' |
-\   call SuperTabChain(&omnifunc, "<c-p>") |
-\ endif
+let g:SuperTabDefaultCompletionType = "context"
+" autocmd FileType *
+" \ if &omnifunc != '' |
+" \   call SuperTabChain(&omnifunc, "<c-p>") |
+" \ endif
 
 
 " custom keybindings
@@ -229,6 +230,8 @@ map <leader>s :sp<CR>
 
 " quick braces, CTRL+F for {}
 imap <C-F> {<CR>}<C-O>O
+" quick parens, CTRL+D for ()
+imap <C-D> (<CR>)<C-O>O
 
 " Move up and down in autocomplete with <c-j> and <c-k>
 inoremap <expr> <c-j> ("\<C-n>")
@@ -310,6 +313,9 @@ let g:typescript_indent_disable = 1
 let g:go_def_mode = 'godef'
 " Pass additional options to the gofmt on-save command
 let g:go_fmt_options = {'gofmt': '-s'}
+" Gopls support
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 
 " Ag/grep searching settings

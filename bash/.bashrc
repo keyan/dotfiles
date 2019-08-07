@@ -15,6 +15,7 @@ source ~/.git-prompt.sh
 export GOROOT=$(go env GOROOT)
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 # Python
 export PATH="/usr/local/bin/python3:/usr/local/opt/python@2/bin:$PATH"
 # Rust
