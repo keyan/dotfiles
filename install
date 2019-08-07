@@ -52,7 +52,8 @@ pip install virtualenvwrapper &>/dev/null
 # bash_profle is for machine specific things that shouldn't be on github
 git update-index --assume-unchanged ${PWD}/bash/.bash_profile
 
-"${link[@]}" ${PWD}/bash/* ~
+"${link[@]}" ${PWD}/bash/git-completion.bash ~
+"${link[@]}" ${PWD}/bash/one-dark.itemcolors ~
 "${link[@]}" ${PWD}/bash/.bashrc ~
 "${link[@]}" ${PWD}/bash/.git-prompt.sh ~
 "${link[@]}" ${PWD}/misc_configs/.pylintrc ~
