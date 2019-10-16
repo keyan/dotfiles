@@ -221,6 +221,7 @@ cmap w!! w !sudo tee % >/dev/null<CR>:e!<CR><CR>
 command Wq wq
 command WQ wq
 command Q q
+command Qa qa
 " quit easy, quit often
 nnoremap <Leader>q :q<CR>
 
@@ -309,6 +310,7 @@ let g:syntastic_cpp_config_file = '.syntastic_cpp_config'
 let g:typescript_indent_disable = 1
 
 " Golang
+" https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt
 " Use godef, not guru for definition search
 let g:go_def_mode = 'godef'
 " Pass additional options to the gofmt on-save command
@@ -316,6 +318,7 @@ let g:go_fmt_options = {'gofmt': '-s'}
 " Gopls support
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+" let g:go_debug = ['lsp', 'shell-commands']
 
 
 " Ag/grep searching settings

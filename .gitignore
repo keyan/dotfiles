@@ -1,3 +1,4 @@
 *.swp
 *.bak
 bash/.bash_profile
+*.swo
