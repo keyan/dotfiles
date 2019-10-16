@@ -1,0 +1,21 @@
+#!/bin/bash
+
+SELF=~/bin/check_mit
+TMP_FILE=~/bin/tmp_file
+LAST_HASH=96f365e411d11adc5724b2b97eadbb1b
+
+RESULTS=`curl -s https://www.media.mit.edu/about/job-opportunities/ | grep "module-title" | grep -v "Postdoctoral" | grep -v "Administrat*" | sed 's/.*>\(.*\)<.*/\1/g'`
+
+CURR_HASH=`echo "$RESULTS" | md5`
+
+if [ $CURR_HASH == $LAST_HASH ]
+then
+  echo 'No new jobs!'
+  exit 0
+fi
+
+echo "$RESULTS"
+
+cat $SELF | sed "s/$LAST_HASH/$CURR_HASH/" > $TMP_FILE
+cat $TMP_FILE > $SELF
+rm $TMP_FILE
