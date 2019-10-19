@@ -212,6 +212,7 @@ nnoremap L $
 
 " get out of insert mode
 inoremap jj <ESC>
+inoremap kl <ESC>
 inoremap jk <ESC>
 
 " allow writing root files when forgetting to sudo
@@ -312,7 +313,7 @@ let g:typescript_indent_disable = 1
 " Golang
 " https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt
 " Use godef, not guru for definition search
-let g:go_def_mode = 'godef'
+" let g:go_def_mode = 'godef'
 " Pass additional options to the gofmt on-save command
 let g:go_fmt_options = {'gofmt': '-s'}
 " Gopls support
