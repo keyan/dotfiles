@@ -65,6 +65,9 @@ if [ "`uname -a | grep -i darwin`" ]; then
     defaults write NSGlobalDomain KeyRepeat -int 1
     defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 
+    # Install fonts.
+    cp misc_configs/Inconsolata.otf /Library/Fonts/
+
     # Install homebrew.
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew install caskroom/cask/brew-cask
