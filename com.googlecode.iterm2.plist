@@ -396,19 +396,19 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1169 108 445 103 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>970 786 620 392 0 0 2560 1440 </string>
+	<string>530 493 620 392 0 0 1680 1050 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>489 287 606 469 0 0 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>2936 640 1018 447 2560 -1120 1440 2537 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
-	<string>127 443 592 584 0 0 1680 1027 </string>
+	<string>230 833 592 584 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>2560 -1097 1440 2514 2560 -1120 1440 2537 </string>
+	<string>0 0 1680 1050 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 0 2560 1440 0 0 2560 1417 </string>
+	<string>0 0 1680 1050 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 0 2560 1440 0 0 2560 1417 </string>
+	<string>0 915 745 502 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>343 181 665 502 0 0 2560 1417 </string>
 	<key>NeverWarnAboutMeta</key>
@@ -1115,7 +1115,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>890B5D2C-5834-4E5C-BCE9-266D0DB11308</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>5</integer>
+	<integer>12</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1834,16 +1834,16 @@
 	</dict>
 	<key>NoSyncSearchHistory2</key>
 	<array>
-		<string>fail</string>
-		<string>Successfully subscribed</string>
-		<string>seconds:20</string>
-		<string>go test</string>
-		<string>https://en.wikipedia.org//wiki/Iran</string>
-		<string>'https://en.wikipedia.org//wiki/Iran'</string>
-		<string>move_re</string>
-		<string>shape</string>
-		<string>sja[e</string>
-		<string>static</string>
+		<string>motivate_BKN_66db5fae-0aca-11e7-82f6-3863bb44ef7c</string>
+		<string>is_av</string>
+		<string>jkjjjjjjjjjjjjjjjkkkkkkkkk</string>
+		<string>1 trip</string>
+		<string>whole</string>
+		<string>transfers:</string>
+		<string>0 tri</string>
+		<string>paph</string>
+		<string>paphst</string>
+		<string>augmentd </string>
 	</array>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>541978145.54645395</real>

@@ -109,6 +109,8 @@ set ignorecase                        " case-insensitive search
 set smartcase                         " upper-case sensitive search
 set gdefault
 set showmatch                         " show matching brackets (),{},[]
+" This unsets the "last search pattern" register by hitting return
+nnoremap <CR> :noh<CR><CR>
 
 
 " Definition (Ctags) and documentation (jedi) lookups
@@ -186,8 +188,12 @@ map <leader>b :Bclose<CR>
 
 
 " Save quicker
-" Add SyntasticCheck here as a hotfix unitl I can debug why autosave is broken
 nnoremap <Leader>w :w<CR>
+
+" Reload quicker
+nnoremap <Leader>e :e<CR>
+
+" Add SyntasticCheck here as a hotfix unitl I can debug why autosave is broken
 " Fast execution of pylint, so I don't include it in the global check list and
 " slow down saves too much.
 " noremap <Leader>l :SyntasticCheck pylint<CR>
@@ -212,7 +218,6 @@ nnoremap L $
 
 " get out of insert mode
 inoremap jj <ESC>
-inoremap kl <ESC>
 inoremap jk <ESC>
 
 " allow writing root files when forgetting to sudo

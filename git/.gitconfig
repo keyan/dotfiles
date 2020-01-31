@@ -15,3 +15,8 @@
     save = !git add -A && git commit -m 'SAVEPOINT'
     fixup = "!f() { git commit --fixup=\"$1\" && git rebase --autosquash -i \"$1\"~5; }; f"
     ds = diff --staged
+    ignore = update-index --assume-unchanged
+    unignore = update-index --no-assume-unchanged
+    ignored = !git ls-files -v | grep "^[[:lower:]]"
+[url "git@github.com:"]
+	insteadOf = https://github.com/
