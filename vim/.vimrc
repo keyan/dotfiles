@@ -40,6 +40,10 @@ Plugin 'fatih/vim-go'
 Plugin 'vim-python/python-syntax'
 " Plugin 'davidhalter/jedi-vim'
 Plugin 'leafgarland/typescript-vim'
+" Enhanced C++ syntax highlighting
+Plugin 'bfrg/vim-cpp-modern'
+" Autogenerate/updated ctags
+Plugin 'ludovicchabant/vim-gutentags'
 
 " Turns on filetype detection and filespecific indentation.
 " Must go after the Vundle configuration above in order to use `ftdetect` dirs.
@@ -122,6 +126,69 @@ map <C-\> :vsp <CR><C-w><S-l> :exec("tag ".expand("<cword>"))<CR>
 " I use shift-k for Ag search, so override the default
 let g:jedi#documentation_command = "F"
 
+let g:gutentags_add_default_project_roots = 0
+let g:gutentags_project_root = ['package.json', '.git']
+" Ignore Golang projects which I use godef for
+" let g:gutentags_exclude_project_root = ['main.go']
+
+" Cache all tag files in the same place
+let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
+" Allow tag cache clearing
+command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
+
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+
+" Making Gutentags faster by ignoring a lot of unnecessary filetypes.
+let g:gutentags_ctags_exclude = [
+      \ '*.git', '*.svg', '*.hg',
+      \ '*/tests/*',
+      \ 'build',
+      \ 'dist',
+      \ '*sites/*/files/*',
+      \ 'bin',
+      \ 'node_modules',
+      \ 'bower_components',
+      \ 'cache',
+      \ 'compiled',
+      \ 'docs',
+      \ 'example',
+      \ 'bundle',
+      \ 'vendor',
+      \ '*.md',
+      \ '*-lock.json',
+      \ '*.lock',
+      \ '*bundle*.js',
+      \ '*build*.js',
+      \ '.*rc*',
+      \ '*.json',
+      \ '*.min.*',
+      \ '*.map',
+      \ '*.bak',
+      \ '*.zip',
+      \ '*.pyc',
+      \ '*.class',
+      \ '*.sln',
+      \ '*.Master',
+      \ '*.csproj',
+      \ '*.tmp',
+      \ '*.csproj.user',
+      \ '*.cache',
+      \ '*.pdb',
+      \ 'tags*',
+      \ 'cscope.*',
+      \ '*.css',
+      \ '*.less',
+      \ '*.scss',
+      \ '*.exe', '*.dll',
+      \ '*.mp3', '*.ogg', '*.flac',
+      \ '*.swp', '*.swo',
+      \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
+      \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+      \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+      \ ]
 
 "  wrap like other editors
 " -------------------------------------
