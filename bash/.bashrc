@@ -18,8 +18,6 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 # Python
 export PATH="/usr/local/bin/python3:/usr/local/opt/python@2/bin:$PATH"
-# Rust
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # Disable localization support to allow for GNU C builds on OSX
 export NO_GETTEXT=1
@@ -60,7 +58,7 @@ eval "$(hub alias -s)"
 export HISTFILESIZE=50000
 export HISTSIZE=50000
 
-# Colors
+# Color constants
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[1;33m\]"
 GREEN="\[\033[0;32m\]"
@@ -75,6 +73,8 @@ LIGHT_GRAY="\[\033[0;37m\]"
 PURPLE="\e[0;35m"
 COLOR_NONE="\[\e[0m\]"
 
-export PS1="${GREEN}\u ${COLOR_NONE}@ ${GREEN}\w${YELLOW}\$(__git_ps1) ${GREEN}${COLOR_NONE}$ ${COLOR_NONE}"
+export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ ${GREEN}\w${YELLOW} $(__git_ps1 "( %s)") ${COLOR_NONE}\n⫸ ${COLOR_NONE}"'
+
+# Use default OS coloring for files when using ls
 export CLICOLOR=1
 PATH=$PATH:/Users/kpishdadian/.lyftkube-bin

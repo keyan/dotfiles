@@ -25,6 +25,16 @@ esac
 mkdir -p ~/bin
 mkdir -p ~/.vim/after/ftplugin/  # Filetype specific formatting rules
 
+##################### Font setup ########################
+git clone https://github.com/powerline/fonts.git --depth=1
+# install
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
+#########################################################
+
 git clone -q https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 tmux source ~/.tmux.conf
 # Python specifics
