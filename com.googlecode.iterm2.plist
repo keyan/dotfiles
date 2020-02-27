@@ -396,7 +396,7 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1169 108 445 103 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>530 493 620 392 0 0 1680 1050 </string>
+	<string>970 786 620 392 0 0 2560 1440 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>489 287 606 469 0 0 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
@@ -404,11 +404,11 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>230 833 592 584 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1680 1050 0 0 1680 1027 </string>
+	<string>2560 -1120 1440 2560 2560 -1120 1440 2537 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 0 1680 1050 0 0 1680 1027 </string>
+	<string>2908 -103 745 502 2560 -1120 1440 2537 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 915 745 502 0 0 2560 1417 </string>
+	<string>2560 915 745 502 2560 -1120 1440 2537 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>343 181 665 502 0 0 2560 1417 </string>
 	<key>NeverWarnAboutMeta</key>
@@ -1115,7 +1115,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>890B5D2C-5834-4E5C-BCE9-266D0DB11308</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>12</integer>
+	<integer>23</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>

@@ -9,6 +9,8 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export PATH=$PATH:~/bin
 source ~/git-completion.bash
 source ~/.git-prompt.sh
+# Fuzzy finding CTRL+R
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 ## PATH setup
 # Golang
@@ -73,7 +75,7 @@ LIGHT_GRAY="\[\033[0;37m\]"
 PURPLE="\e[0;35m"
 COLOR_NONE="\[\e[0m\]"
 
-export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ ${GREEN}\w${YELLOW} $(__git_ps1 "( %s)") ${COLOR_NONE}\n⫸ ${COLOR_NONE}"'
+export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${COLOR_NONE}\n⫸ ${COLOR_NONE}"'
 
 # Use default OS coloring for files when using ls
 export CLICOLOR=1

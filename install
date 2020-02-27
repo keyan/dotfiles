@@ -12,6 +12,22 @@ case "$response" in
     ;;
 esac
 
+read -r -p "Install fonts? [y/N] " response
+case "$response" in
+  [yY])
+    git clone https://github.com/powerline/fonts.git --depth=1
+    # install
+    cd fonts
+    ./install.sh
+    # clean-up a bit
+    cd ..
+    rm -rf fonts
+    ;;
+  *)
+    :
+    ;;
+esac
+
 read -r -p "Setup dotfiles? [y/N] " response
 case "$response" in
   [nN])
@@ -22,18 +38,9 @@ case "$response" in
     ;;
 esac
 
+
 mkdir -p ~/bin
 mkdir -p ~/.vim/after/ftplugin/  # Filetype specific formatting rules
-
-##################### Font setup ########################
-git clone https://github.com/powerline/fonts.git --depth=1
-# install
-cd fonts
-./install.sh
-# clean-up a bit
-cd ..
-rm -rf fonts
-#########################################################
 
 git clone -q https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 tmux source ~/.tmux.conf
@@ -83,6 +90,10 @@ if [ "`uname -a | grep -i darwin`" ]; then
     brew install caskroom/cask/brew-cask
 
     brew update
+
+    # Fuzzy finding in bash.
+    brew install fzf
+    $(brew --prefix)/opt/fzf/install
 
     brew install vim
     brew install nvim
