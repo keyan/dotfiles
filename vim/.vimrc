@@ -264,7 +264,7 @@ nnoremap <Leader>e :e<CR>
 " Fast execution of pylint, so I don't include it in the global check list and
 " slow down saves too much.
 " noremap <Leader>l :SyntasticCheck pylint<CR>
-noremap <Leader>l :SyntasticCheck<CR>
+" noremap <Leader>l :SyntasticCheck<CR>
 
 " Run spellcheck and highlight unknown words
 :command Spellcheck setlocal spell spelllang=en_us
@@ -313,6 +313,9 @@ inoremap <expr> <c-k> ("\<C-p>")
 
 " Close the preview window easily
 map <leader>p :pclose<CR>
+
+" Quick and dirty latex recompile
+map <leader>l :! pdflatex %<CR><CR>
 
 " auto commands
 " -------------------------------------
