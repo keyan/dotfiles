@@ -13,7 +13,7 @@
     b = branch
     amend = commit --amend --no-edit
     save = !git add -A && git commit -m 'SAVEPOINT'
-    fixup = "!f() { git commit --fixup=\"$1\" && git rebase --autosquash -i \"$1\"~5; }; f"
+    fixup = "!f() { git commit -n --fixup=\"$1\" && git rebase --autosquash -i \"$1\"~5; }; f"
     ds = diff --staged
     ignore = update-index --assume-unchanged
     unignore = update-index --no-assume-unchanged

@@ -44,6 +44,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'bfrg/vim-cpp-modern'
 " Autogenerate/updated ctags
 Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'rakr/vim-one'
 
 " Turns on filetype detection and filespecific indentation.
 " Must go after the Vundle configuration above in order to use `ftdetect` dirs.
