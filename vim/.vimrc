@@ -229,7 +229,9 @@ let g:python_highlight_all = 1
 
 syntax on
 syntax enable
-colorscheme onedark
+colorscheme one
+" set background=light
+" colorscheme onedark
 
 " code completion
 " -------------------------------------
@@ -317,6 +319,9 @@ map <leader>p :pclose<CR>
 
 " Quick and dirty latex recompile
 map <leader>l :! pdflatex %<CR><CR>
+
+" Add newline without going into insert mode, stay on current line
+nnoremap <C-J> a<CR><Esc>k$
 
 " auto commands
 " -------------------------------------
