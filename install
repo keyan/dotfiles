@@ -92,25 +92,23 @@ if [ "`uname -a | grep -i darwin`" ]; then
 
     brew update
 
+    brew install vim \\
+      git \\
+      github/gh/gh \\
+      hub \\
+      bash-completion \\
+      tree \\
+      eocat \\
+      the_silver_searcher \\
+      install --HEAD universal-ctags/universal-ctags/universal-ctags \\
+      # For tmux system clipboard copy.
+      reattach-to-user-namespace \\
+      fzf \\
+
     # Fuzzy finding in bash.
-    brew install fzf
     $(brew --prefix)/opt/fzf/install
 
-    brew install vim
-    brew install nvim
-    brew install git
-    brew install hub
-    brew install bash-completion
-    brew install tree
-    brew install python
-    brew install eocat
-    brew install the_silver_searcher
-    brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-
     brew cask install flux
-
-    # For tmux system clipboard copy.
-    brew install reattach-to-user-namespace
 
     # Don't show "last login" message.
     touch ~/.hushlogin
