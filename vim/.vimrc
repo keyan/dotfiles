@@ -400,6 +400,9 @@ let g:go_fmt_options = {'gofmt': '-s'}
 " Gopls support
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+" Run GoImports on save, which also runs gofmt
+" Might want to disable this because it is slow on large codebases
+let g:go_fmt_command = "goimports"
 " let g:go_debug = ['lsp', 'shell-commands']
 
 

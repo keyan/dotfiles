@@ -41,16 +41,16 @@ alias venv_on='source /usr/local/bin/virtualenvwrapper.sh'
 
 alias gl='git log'
 alias gb='git branch'
+alias glc='git rev-parse HEAD | pbcopy'
 alias gbb="git for-each-ref --sort=-\committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias lines_by_author="git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr"
 alias gs='git status'
 alias gc='git checkout'
 alias gbclear="git branch | grep -v '\*\|master' | xargs -n 1 git branch -D"
 alias gtclear="git tag -l | xargs git tag -d; git fetch"
-alias gp="git pull origin master && gen_tags"
+alias gcm="git checkout master; git pull origin master"
 alias hag='history|ag'
 alias ll='ls -la'
-alias tf='terraform'
 alias gen_tags='ctags -R --languages=python --python-kinds=-i --exclude=.mypy_cache .'
 
 # Let `hub` be used as `git`
