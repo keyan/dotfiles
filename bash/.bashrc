@@ -27,9 +27,6 @@ export NO_GETTEXT=1
 # Git stuff
 git config --global web.browser open
 
-# # Autojump
-# [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-
 # Git completion
 # if [ -f `brew --prefix`/etc/bash_completion ]; then
 #     . `brew --prefix`/etc/bash_completion
@@ -76,6 +73,11 @@ PURPLE="\e[0;35m"
 COLOR_NONE="\[\e[0m\]"
 
 export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${COLOR_NONE}\n⫸ ${COLOR_NONE}"'
+
+# # Autojump
+# [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+# Jump (in lieu of autojump)
+eval "$(jump shell bash)"
 
 # Use default OS coloring for files when using ls
 export CLICOLOR=1

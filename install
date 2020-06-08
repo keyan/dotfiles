@@ -82,6 +82,7 @@ if [ "`uname -a | grep -i darwin`" ]; then
     defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
     defaults write NSGlobalDomain KeyRepeat -int 1
     defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+    defaults write -g ApplePressAndHoldEnabled -bool false # don't open special char tab
 
     # Install fonts.
     cp misc_configs/Inconsolata.otf /Library/Fonts/
@@ -104,6 +105,7 @@ if [ "`uname -a | grep -i darwin`" ]; then
       # For tmux system clipboard copy.
       reattach-to-user-namespace \\
       fzf \\
+      jump \\
 
     # Fuzzy finding in bash.
     $(brew --prefix)/opt/fzf/install
