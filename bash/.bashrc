@@ -19,7 +19,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 # Python
-export PATH="/usr/local/bin/python3:/usr/local/opt/python@2/bin:$PATH"
+export PATH="/usr/local/bin/python3:$PATH"
 
 # Disable localization support to allow for GNU C builds on OSX
 export NO_GETTEXT=1

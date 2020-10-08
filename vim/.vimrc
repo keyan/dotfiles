@@ -305,10 +305,13 @@ map <leader>k :NERDTree<CR>
 map <leader>v :vsp<CR>
 map <leader>s :sp<CR>
 
+" Custom CTRL commands
 " quick braces, CTRL+F for {}
 imap <C-F> {<CR>}<C-O>O
 " quick parens, CTRL+D for ()
 imap <C-D> (<CR>)<C-O>O
+" execute current file with python3
+nnoremap <C-K> :!clear; python3 %<CR>
 
 " Move up and down in autocomplete with <c-j> and <c-k>
 inoremap <expr> <c-j> ("\<C-n>")
