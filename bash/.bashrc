@@ -45,7 +45,7 @@ alias gs='git status'
 alias gc='git checkout'
 alias gbclear="git branch | grep -v '\*\|master' | xargs -n 1 git branch -D"
 alias gtclear="git tag -l | xargs git tag -d; git fetch"
-alias gcm="git checkout master; git pull origin master"
+alias gcm="git branch --format='%(refname:short)' | grep 'master\|main' | head -1 | xargs -I% -- sh -c 'git checkout \"%\"; git pull origin \"%\";'"
 alias hag='history|ag'
 alias ll='ls -la'
 alias gen_tags='ctags -R --languages=python --python-kinds=-i --exclude=.mypy_cache .'
