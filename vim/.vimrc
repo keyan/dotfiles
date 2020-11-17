@@ -320,8 +320,8 @@ inoremap <expr> <c-k> ("\<C-p>")
 " Close the preview window easily
 map <leader>p :pclose<CR>
 
-" Quick and dirty latex recompile
-map <leader>l :! pdflatex %<CR><CR>
+" Quick and dirty latex recompile, ignore if accidently used on non-tex file
+map <leader>l :! [ % == *.tex ] && pdflatex %<CR><CR>
 
 " Add newline without going into insert mode, stay on current line
 nnoremap <C-J> a<CR><Esc>k$
@@ -405,7 +405,7 @@ let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 " Run GoImports on save, which also runs gofmt
 " Might want to disable this because it is slow on large codebases
-let g:go_fmt_command = "goimports"
+" let g:go_fmt_command = "goimports"
 " let g:go_debug = ['lsp', 'shell-commands']
 
 

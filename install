@@ -59,7 +59,8 @@ git update-index --assume-unchanged ${PWD}/bash/.bash_profile
 "${link[@]}" ${PWD}/git/.* ~
 "${link[@]}" ${PWD}/scripts/* ~/bin
 "${link[@]}" ${PWD}/vim/.vimrc ~
-"${link[@]}" ${PWD}/vim/* ~/.vim/after/ftplugin
+"${link[@]}" ${PWD}/vim/ftplugin/* ~/.vim/after/ftplugin
+"${link[@]}" ${PWD}/vim/indent/* ~/.vim/indent
 "${link[@]}" ${PWD}/tmux/.tmux.conf ~
 "${link[@]}" ${PWD}/karabiner/karabiner.json ~/.config/karabiner/
 
