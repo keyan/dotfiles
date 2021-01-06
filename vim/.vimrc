@@ -229,6 +229,7 @@ let g:python_highlight_all = 1
 
 syntax on
 syntax enable
+set background=dark
 colorscheme one
 " set background=light
 " colorscheme onedark

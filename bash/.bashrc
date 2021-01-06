@@ -51,7 +51,7 @@ alias ll='ls -la'
 alias gen_tags='ctags -R --languages=python --python-kinds=-i --exclude=.mypy_cache .'
 
 # Let `hub` be used as `git`
-eval "$(hub alias -s)"
+eval "$(hub alias -s &> /dev/null)"
 
 # Keeps history FOOOORRR-EEEEE-VER
 export HISTFILESIZE=50000
@@ -72,7 +72,7 @@ LIGHT_GRAY="\[\033[0;37m\]"
 PURPLE="\e[0;35m"
 COLOR_NONE="\[\e[0m\]"
 
-export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${COLOR_NONE}\n⫸ ${COLOR_NONE}"'
+export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ \h ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${COLOR_NONE}\n⫸ ${COLOR_NONE}"'
 
 # # Autojump
 # [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
@@ -82,3 +82,6 @@ eval "$(jump shell bash)"
 # Use default OS coloring for files when using ls
 export CLICOLOR=1
 PATH=$PATH:/Users/kpishdadian/.lyftkube-bin
+
+# Mac Catalina+ keeps warning you about using bash...
+export BASH_SILENCE_DEPRECATION_WARNING=1

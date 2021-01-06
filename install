@@ -64,6 +64,8 @@ git update-index --assume-unchanged ${PWD}/bash/.bash_profile
 "${link[@]}" ${PWD}/tmux/.tmux.conf ~
 "${link[@]}" ${PWD}/karabiner/karabiner.json ~/.config/karabiner/
 
+echo "source ~/.bashrc" > ~/.bash_profile
+
 vim -S vim/setup.vim
 
 ## Apply Mac specific settings and packages.
@@ -90,7 +92,7 @@ if [ "`uname -a | grep -i darwin`" ]; then
 
     # Install homebrew.
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew install caskroom/cask/brew-cask
+    brew tap homebrew/cask
 
     brew update
 
@@ -115,4 +117,18 @@ if [ "`uname -a | grep -i darwin`" ]; then
 
     # Don't show "last login" message.
     touch ~/.hushlogin
+fi
+
+## Apply Linux specific settings and packages.
+if [ "`uname -a | grep -i Linux`" ]; then
+  sudo apt-get update
+  sudo apt-get install fzf
+  sudo apt-get install ctags
+  sudo apt-get install the_silver_searcher
+  wget https://github.com/gsamokovarov/jump/releases/download/v0.30.1/jump_0.30.1_amd64.deb && sudo dpkg -i jump_0.30.1_amd64.deb
+
+  # Ubuntu official PPA doesn't have latest vim
+  sudo add-apt-repository ppa:jonathonf/vim
+  sudo apt update
+  sudo apt install vim
 fi
