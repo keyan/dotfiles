@@ -227,6 +227,7 @@ endif
 " python-syntax options
 let g:python_highlight_all = 1
 
+set termguicolors
 syntax on
 syntax enable
 set background=dark
@@ -402,8 +403,11 @@ let g:typescript_indent_disable = 1
 " Pass additional options to the gofmt on-save command
 let g:go_fmt_options = {'gofmt': '-s'}
 " Gopls support
+let g:go_gopls_enabled = 1
+let g:go_gopls_options = ['-remote=auto']
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+let g:go_referrers_mode = 'gopls'
 " Run GoImports on save, which also runs gofmt
 " Might want to disable this because it is slow on large codebases
 " let g:go_fmt_command = "goimports"
