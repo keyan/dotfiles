@@ -11,7 +11,8 @@ if !filereadable(vundle_readme)
 	echo "Installing Vundle.."
 	echo ""
 	silent !mkdir -p ~/.vim/bundle
-	silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+	silent !git clone http://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
+
 	let iCanHazVundle=0
 endif
 set rtp+=~/.vim/bundle/vundle/
@@ -75,7 +76,7 @@ set number                            " show number line
 set magic                             " enables regex highlight
 set ttimeoutlen=50
 set timeoutlen=300	  	      " esc delay
-set clipboard=unnamed                 " yank+paste use the osx clipboard
+set clipboard=unnamedplus             " yank+paste use the osx clipboard
 
 
 " undofile

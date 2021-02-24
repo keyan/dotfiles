@@ -96,19 +96,17 @@ if [ "`uname -a | grep -i darwin`" ]; then
 
     brew update
 
-    brew install vim \\
-      git \\
-      github/gh/gh \\
-      hub \\
-      bash-completion \\
-      tree \\
-      eocat \\
-      the_silver_searcher \\
-      install --HEAD universal-ctags/universal-ctags/universal-ctags \\
-      # For tmux system clipboard copy.
-      reattach-to-user-namespace \\
-      fzf \\
-      jump \\
+    brew install vim \
+      git \
+      github/gh/gh \
+      hub \
+      bash-completion \
+      tree \
+      eocat \
+      the_silver_searcher \
+      install --HEAD universal-ctags/universal-ctags/universal-ctags \
+      fzf \
+      jump \
 
     # Fuzzy finding in bash.
     $(brew --prefix)/opt/fzf/install
@@ -129,7 +127,41 @@ if [ "`uname -a | grep -i Linux`" ]; then
   wget https://github.com/gsamokovarov/jump/releases/download/v0.30.1/jump_0.30.1_amd64.deb && sudo dpkg -i jump_0.30.1_amd64.deb
 
   # Ubuntu official PPA doesn't have latest vim
-  sudo add-apt-repository ppa:jonathonf/vim
-  sudo apt update
-  sudo apt install vim
+  apt-get install vim-gtk
+
+  # Mac style bindings
+  git clone https://github.com/rbreaves/kinto.git
+  cd kinto
+  ./setup.py
+
+  # Install Chrome
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  sudo apt install ./google-chrome-stable_current_amd64.deb
+
+  sudo apt-get install gnome-tweak-tool
+  sudo apt install tilix
+  sudo apt install xclip
+
+  # Better battery usage (really laptop specific)
+  sudo apt install powertop
+  sudo sh -c 'echo "powertop --auto-tune" >> /etc/rc.local'
+
+  # See http://wiki.ros.org/noetic/Installation/Ubuntu
+  read -r -p "Complete ROS configuration? [y/N] " response
+  case "$response" in
+    [yY])
+      sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+      sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
+      sudo apt update
+      sudo apt install ros-noetic-desktop-full
+      sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+
+      sudo rosdep init
+      rosdep update
+      ;;
+    *)
+      :
+      ;;
+  esac
 fi

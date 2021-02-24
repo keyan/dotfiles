@@ -11,6 +11,8 @@ source ~/git-completion.bash
 source ~/.git-prompt.sh
 # Fuzzy finding CTRL+R
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/completion.bash
 
 ## PATH setup
 # Golang
@@ -50,6 +52,16 @@ alias hag='history|ag'
 alias ll='ls -la'
 alias gen_tags='ctags -R --languages=python --python-kinds=-i --exclude=.mypy_cache .'
 
+# Linux specific stuff
+if [ "`uname -a | grep -i Linux`" ]; then
+  # Aliases to make linux pretend to be mac
+  alias pbcopy="xclip -selection clipboard"
+  alias pbpaste="xclip -selection clipboard -o"
+
+  # This fails if ROS isn't installed, but its okay
+  source /opt/ros/noetic/setup.bash $> /dev/null
+fi
+
 # Let `hub` be used as `git`
 eval "$(hub alias -s &> /dev/null)"
 
@@ -72,7 +84,8 @@ LIGHT_GRAY="\[\033[0;37m\]"
 PURPLE="\e[0;35m"
 COLOR_NONE="\[\e[0m\]"
 
-export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ \h ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${COLOR_NONE}\n⫸ ${COLOR_NONE}"'
+# export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ \h ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${COLOR_NONE}\n⫸ ${COLOR_NONE}"'
+export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ \h ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${COLOR_NONE}\n> ${COLOR_NONE}"'
 
 # # Autojump
 # [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
