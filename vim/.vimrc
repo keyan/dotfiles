@@ -76,7 +76,7 @@ set number                            " show number line
 set magic                             " enables regex highlight
 set ttimeoutlen=50
 set timeoutlen=300	  	      " esc delay
-set clipboard=unnamedplus             " yank+paste use the osx clipboard
+set clipboard=unnamed                 " yank+paste use the osx clipboard
 
 
 " undofile
