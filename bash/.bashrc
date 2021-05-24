@@ -13,6 +13,10 @@ source ~/.git-prompt.sh
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 source /usr/share/doc/fzf/examples/key-bindings.bash &> /dev/null
 source /usr/share/doc/fzf/examples/completion.bash &> /dev/null
+# zlib
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
 ## PATH setup
 # Golang
@@ -38,7 +42,8 @@ git config --global web.browser open
 # when it is actually needed (which isn't very often for me these days).
 alias venv_on='source /usr/local/bin/virtualenvwrapper.sh'
 
-alias gl='git log'
+# alias gl="git log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'"
+alias gl="git log"
 alias gb='git branch'
 alias glc='git rev-parse HEAD | pbcopy'
 alias gbb="git for-each-ref --sort=-\committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
@@ -51,6 +56,7 @@ alias gcm="git branch --format='%(refname:short)' | grep 'master\|main' | head -
 alias hag='history|ag'
 alias ll='ls -la'
 alias gen_tags='ctags -R --languages=python --python-kinds=-i --exclude=.mypy_cache .'
+alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 
 # Linux specific stuff
 if [ "`uname -a | grep -i Linux`" ]; then
@@ -84,8 +90,20 @@ LIGHT_GRAY="\[\033[0;37m\]"
 PURPLE="\e[0;35m"
 COLOR_NONE="\[\e[0m\]"
 
+# Set the full bash prompt.
+function set_bash_prompt () {
+  # Set the PYTHON_VIRTUALENV variable.
+  if test -z "$VIRTUAL_ENV" ; then
+      PYTHON_VIRTUALENV=""
+  else
+      PYTHON_VIRTUALENV="${GREEN}[venv: `basename \"$VIRTUAL_ENV\"`]${COLOR_NONE} "
+  fi
+  PS1="${COLOR_NONE}\u @ \h ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${PYTHON_VIRTUALENV} ${COLOR_NONE}\n⫸ ${COLOR_NONE}"
+}
+
+export PROMPT_COMMAND=set_bash_prompt
 # export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ \h ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${COLOR_NONE}\n⫸ ${COLOR_NONE}"'
-export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ \h ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${COLOR_NONE}\n> ${COLOR_NONE}"'
+# export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ \h ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${COLOR_NONE}\n> ${COLOR_NONE}"'
 
 # # Autojump
 # [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh

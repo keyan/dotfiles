@@ -274,6 +274,8 @@ nnoremap <Leader>e :e<CR>
 
 " Run spellcheck and highlight unknown words
 :command Spellcheck setlocal spell spelllang=en_us
+hi clear SpellBad
+hi SpellBad cterm=underline
 
 " v to expand selection, <C-v> to reduce
 vmap v <Plug>(expand_region_expand)
@@ -324,7 +326,8 @@ inoremap <expr> <c-k> ("\<C-p>")
 map <leader>p :pclose<CR>
 
 " Quick and dirty latex recompile, ignore if accidently used on non-tex file
-map <leader>l :! [ % == *.tex ] && pdflatex %<CR><CR>
+" map <leader>l :! [ % == *.tex ] && pdflatex %<CR><CR>
+map <leader>l :! pdflatex %<CR><CR>
 
 " Add newline without going into insert mode, stay on current line
 nnoremap <C-J> a<CR><Esc>k$
