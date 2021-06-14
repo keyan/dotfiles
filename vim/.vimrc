@@ -231,8 +231,14 @@ let g:python_highlight_all = 1
 set termguicolors
 syntax on
 syntax enable
-set background=dark
 colorscheme one
+
+set background=dark
+" if system('date +%H') > 12
+"     set background=dark
+" else
+"     set background=light
+" endif
 " set background=light
 " colorscheme onedark
 
