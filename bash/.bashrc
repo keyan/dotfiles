@@ -65,7 +65,7 @@ if [ "`uname -a | grep -i Linux`" ]; then
   alias pbpaste="xclip -selection clipboard -o"
 
   # This fails if ROS isn't installed, but its okay
-  source /opt/ros/noetic/setup.bash $> /dev/null
+  # source /opt/ros/noetic/setup.bash $> /dev/null
 fi
 
 # Let `hub` be used as `git`
@@ -98,12 +98,15 @@ function set_bash_prompt () {
   else
       PYTHON_VIRTUALENV="${GREEN}[venv: `basename \"$VIRTUAL_ENV\"`]${COLOR_NONE} "
   fi
-  PS1="${COLOR_NONE}\u @ \h ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${PYTHON_VIRTUALENV} ${COLOR_NONE}\n⫸ ${COLOR_NONE}"
+
+  if [ "`uname -a | grep -i Linux`" ]; then
+    PS1="${COLOR_NONE}\u @ \h ${BLUE}\w${MAGENTA} $(__git_ps1 "(\u2387 %s)") ${PYTHON_VIRTUALENV} ${COLOR_NONE}\n> ${COLOR_NONE}"
+  else
+    PS1="${COLOR_NONE}\u @ \h ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${PYTHON_VIRTUALENV} ${COLOR_NONE}\n⫸ ${COLOR_NONE}"
+  fi
 }
 
 export PROMPT_COMMAND=set_bash_prompt
-# export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ \h ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${COLOR_NONE}\n⫸ ${COLOR_NONE}"'
-# export PROMPT_COMMAND='PS1="${COLOR_NONE}\u @ \h ${BLUE}\w${MAGENTA} $(__git_ps1 "( %s)") ${COLOR_NONE}\n> ${COLOR_NONE}"'
 
 # # Autojump
 # [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh

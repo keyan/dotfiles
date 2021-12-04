@@ -126,25 +126,33 @@ if [ "`uname -a | grep -i Linux`" ]; then
 
   wget https://github.com/gsamokovarov/jump/releases/download/v0.30.1/jump_0.30.1_amd64.deb && sudo dpkg -i jump_0.30.1_amd64.deb
 
-  # Ubuntu official PPA doesn't have latest vim
-  apt-get install vim-gtk
+  read -r -p "Complete Ubuntu configuration? [y/N] " response
+  case "$response" in
+    [yY])
+      # Ubuntu official PPA doesn't have latest vim
+      apt-get install vim-gtk
 
-  # Mac style bindings
-  git clone https://github.com/rbreaves/kinto.git
-  cd kinto
-  ./setup.py
+      # Mac style bindings
+      git clone https://github.com/rbreaves/kinto.git
+      cd kinto
+      ./setup.py
 
-  # Install Chrome
-  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  sudo apt install ./google-chrome-stable_current_amd64.deb
+      # Install Chrome
+      wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      sudo apt install ./google-chrome-stable_current_amd64.deb
 
-  sudo apt-get install gnome-tweak-tool
-  sudo apt install tilix
-  sudo apt install xclip
+      sudo apt-get install gnome-tweak-tool
+      sudo apt install tilix
+      sudo apt install xclip
 
-  # Better battery usage (really laptop specific)
-  sudo apt install powertop
-  sudo sh -c 'echo "powertop --auto-tune" >> /etc/rc.local'
+      # Better battery usage (really laptop specific)
+      sudo apt install powertop
+      sudo sh -c 'echo "powertop --auto-tune" >> /etc/rc.local'
+      ;;
+    *)
+      :
+      ;;
+  esac
 
   # See http://wiki.ros.org/noetic/Installation/Ubuntu
   read -r -p "Complete ROS configuration? [y/N] " response
