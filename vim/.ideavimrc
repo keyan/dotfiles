@@ -1,0 +1,121 @@
+" Good reference
+" https://gist.github.com/dewaka/ef947e52767bf453eaf77c852051eb7e
+
+" Plugins
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-commentary'
+
+" Turns on filetype detection and filespecific indentation.
+filetype plugin indent on
+filetype plugin on
+
+" General Options
+" -------------------------------------
+set t_Co=256                          " enable 256 colors
+set mouse=a                           " make sure mouse is used in all cases.
+set autoread                          " detect external changes
+set scrolloff=5                       " lines between cursor and edge
+set showmode
+set hidden                            " allow for hidden open files in buffers
+set showcmd                           " display current command
+set cmdheight=1                       " set the command height
+set shortmess+=I                      " disable the welcome screen
+set complete+=k                       " enable dictionary completion
+set wildmenu  			      " cmd line completion
+set wildmode=list:longest,full
+set wildignore=*.o,*~,*.pyc,*.pyo,*.so,*.sw*,__pycache__
+" set ttyfast
+set ruler                             " ruler display in status line
+set backspace=2                       " full backspacing capabilities
+set backspace=indent,eol,start        " behave like a normal backspace
+set laststatus=2                      " always show a status line
+set number                            " show number line
+set magic                             " enables regex highlight
+set ttimeoutlen=50
+set timeoutlen=300	  	      " esc delay
+set clipboard=unnamed                 " yank+paste use the osx clipboard
+
+" tabs and indenting
+" -------------------------------------
+set expandtab                         " replace tabs with spaces
+set autoindent                        " auto indents next new line
+set shiftround                        " better tab aligning
+set smartindent
+
+" searching
+" -------------------------------------
+set hlsearch                          " highlight search results
+set incsearch                         " increment search
+set ignorecase                        " case-insensitive search
+set smartcase                         " upper-case sensitive search
+set gdefault
+set showmatch                         " show matching brackets (),{},[]
+
+" This unsets the "last search pattern" register by hitting return
+nnoremap <CR> :noh<CR><CR>
+
+" custom keybindings
+" -------------------------------------
+" Space is leader (all hail space)
+let mapleader = " "
+
+" When pasting in visual mode, reselect and yank so you don't overwrite the register
+xnoremap p pgvy
+
+" Buffer closing
+" map :bd to :Bclose so spilts don't close with bd
+map <leader>b :bd<CR>
+
+" Save quicker
+nnoremap <Leader>w :w<CR>
+
+" Reload quicker
+nnoremap <Leader>e :e<CR>
+
+" hjkl only - prevents scrolling over to next line
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" remap H to go to beginning of line, L to end
+nnoremap H ^
+nnoremap L $
+
+" get out of insert mode
+inoremap jj <ESC>
+inoremap jk <ESC>
+
+" I always mistype :wq
+command Wq wq
+command WQ wq
+command Q q
+command Qa qa
+" quit easy, quit often
+nnoremap <Leader>q :q<CR>
+
+map <leader>k :NERDTreeFind<CR>
+map <leader>v :vsp<CR>
+map <leader>s :sp<CR>
+
+" Custom CTRL commands
+" quick braces, CTRL+F for {}
+imap <C-F> {<CR>}<C-O>O
+
+" Move up and down in autocomplete with <c-j> and <c-k>
+inoremap <expr> <c-j> ("\<C-n>")
+inoremap <expr> <c-k> ("\<C-p>")
+
+" Add newline without going into insert mode, stay on current line
+nnoremap <C-J> a<CR><Esc>k$
+
+" unimpaired mappings
+nnoremap [b :action PreviousTab<cr>
+nnoremap ]b :action NextTab<cr>
+
+" Behave more like vim when jumping back and forth
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
+
+nnoremap <C-w>L :action MoveEditorToOppositeTabGroup<CR>
+nnoremap <C-w>H :action MoveEditorToOppositeTabGroup<CR>

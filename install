@@ -15,9 +15,10 @@ esac
 read -r -p "Install fonts? [y/N] " response
 case "$response" in
   [yY])
+    mkdir -p ~/Library/Fonts
     git clone https://github.com/powerline/fonts.git --depth=1
     # install
-    cd fonts
+    cd fonts || exit
     ./install.sh
     # clean-up a bit
     cd ..
@@ -80,6 +81,10 @@ if [ "`uname -a | grep -i darwin`" ]; then
         ;;
     esac
 
+    # Show cmd+tab switcher on every display
+    defaults write com.apple.Dock appswitcher-all-displays -bool true
+    killall Dock
+
     # Decrease key repeat speed to 0.
     defaults write NSGlobalDomain InitialKeyRepeat -int 10
     defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
@@ -98,8 +103,7 @@ if [ "`uname -a | grep -i darwin`" ]; then
 
     brew install vim \
       git \
-      github/gh/gh \
-      hub \
+      gh \
       bash-completion \
       tree \
       eocat \
@@ -107,11 +111,10 @@ if [ "`uname -a | grep -i darwin`" ]; then
       install --HEAD universal-ctags/universal-ctags/universal-ctags \
       fzf \
       jump \
+      fasd \
 
     # Fuzzy finding in bash.
     $(brew --prefix)/opt/fzf/install
-
-    brew cask install flux
 
     # Don't show "last login" message.
     touch ~/.hushlogin
@@ -134,7 +137,7 @@ if [ "`uname -a | grep -i Linux`" ]; then
 
       # Mac style bindings
       git clone https://github.com/rbreaves/kinto.git
-      cd kinto
+      cd kinto || exit
       ./setup.py
 
       # Install Chrome

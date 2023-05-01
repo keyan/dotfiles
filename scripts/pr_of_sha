@@ -1,5 +1,5 @@
 #!/bin/bash
 
-export GITHUB_UPSTREAM=TeachersPayTeachers
+# export GITHUB_UPSTREAM=TeachersPayTeachers
 
-git log --merges --ancestry-path --oneline $1..master | grep 'pull request' | tail -n1 | awk '{print $5}' | cut -c2- | xargs -I % open https://github.com/$GITHUB_UPSTREAM/tpt/pull/%
+git log --merges --ancestry-path --oneline $1..master | grep 'pull request' | tail -n1 | awk '{print $5}' | cut -c2- | xargs -I % open https://git.corp.stripe.com/stripe-internal/pay-server/pull/%

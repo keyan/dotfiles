@@ -38,6 +38,9 @@ git config --global web.browser open
 #     . `brew --prefix`/etc/bash_completion
 # fi
 
+# Ripgrep is faster but I keep forgetting to use it.
+alias ag='rg'
+
 # Loading virtualenvwrapper on terminal startup is way too slow, instead load it on demand
 # when it is actually needed (which isn't very often for me these days).
 alias venv_on='source /usr/local/bin/virtualenvwrapper.sh'
@@ -67,9 +70,6 @@ if [ "`uname -a | grep -i Linux`" ]; then
   # This fails if ROS isn't installed, but its okay
   # source /opt/ros/noetic/setup.bash $> /dev/null
 fi
-
-# Let `hub` be used as `git`
-eval "$(hub alias -s &> /dev/null)"
 
 # Keeps history FOOOORRR-EEEEE-VER
 export HISTFILESIZE=50000
@@ -108,14 +108,18 @@ function set_bash_prompt () {
 
 export PROMPT_COMMAND=set_bash_prompt
 
-# # Autojump
-# [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+# Directory navigation
+##############################
 # Jump (in lieu of autojump)
-eval "$(jump shell bash)"
+# eval "$(jump shell bash)"
+# fasd is approved software, otherwise jump is just fine
+eval "$(fasd --init auto)"
+alias j='fasd_cd -d' # cd, same functionality as j in jump
+# For autocomplete
+_fasd_bash_hook_cmd_complete j
 
 # Use default OS coloring for files when using ls
 export CLICOLOR=1
-PATH=$PATH:/Users/kpishdadian/.lyftkube-bin
 
 # Mac Catalina+ keeps warning you about using bash...
 export BASH_SILENCE_DEPRECATION_WARNING=1

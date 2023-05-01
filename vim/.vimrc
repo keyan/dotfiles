@@ -26,8 +26,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
-Plugin 'ggreer/the_silver_searcher'
-Plugin 'kien/ctrlp.vim'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
@@ -40,13 +38,18 @@ Plugin 'tpope/vim-abolish'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'vim-python/python-syntax'
-" Plugin 'davidhalter/jedi-vim'
-Plugin 'leafgarland/typescript-vim'
-" Enhanced C++ syntax highlighting
-Plugin 'bfrg/vim-cpp-modern'
 " Autogenerate/updated ctags
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'rakr/vim-one'
+Plugin 'junegunn/fzf.vim'
+Plugin 'dense-analysis/ale'
+" Ruby auto 'end' appending
+Plugin 'tpope/vim-endwise'
+" Other steps required: https://github.com/ycm-core/YouCompleteMe#macos
+" Plugin 'ycm-core/YouCompleteMe'
+
+" All Plugins must be added before the following line
+call vundle#end()
 
 " Turns on filetype detection and filespecific indentation.
 " Must go after the Vundle configuration above in order to use `ftdetect` dirs.
@@ -130,7 +133,11 @@ map <C-\> :vsp <CR><C-w><S-l> :exec("tag ".expand("<cword>"))<CR>
 let g:jedi#documentation_command = "F"
 
 let g:gutentags_add_default_project_roots = 0
-let g:gutentags_project_root = ['package.json', '.git']
+
+" Uncomment to enable ctags for all repos.
+" let g:gutentags_project_root = ['package.json', '.git']
+let g:gutentags_project_root = []
+
 " Ignore Golang projects which I use godef for
 " let g:gutentags_exclude_project_root = ['main.go']
 
@@ -139,6 +146,9 @@ let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
 " Allow tag cache clearing
 command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
 
+" Uncomment for debugging
+" let g:gutentags_trace = 1
+
 let g:gutentags_generate_on_new = 1
 let g:gutentags_generate_on_missing = 1
 let g:gutentags_generate_on_write = 1
@@ -146,6 +156,10 @@ let g:gutentags_generate_on_empty_buffer = 0
 
 " Making Gutentags faster by ignoring a lot of unnecessary filetypes.
 let g:gutentags_ctags_exclude = [
+      \ '~/stripe-b/*',
+      \ '~/stripe/pay-server/*',
+      \ '~/stripe/zoolander/src/*',
+      \ '~/stripe/zoolander/zoolander-*',
       \ '*.git', '*.svg', '*.hg',
       \ '*/tests/*',
       \ 'build',
@@ -233,15 +247,16 @@ set termguicolors
 syntax on
 syntax enable
 colorscheme one
-
+" colorscheme onedark
+" set background=light
 set background=dark
+
+" Time based background color
 " if system('date +%H') > 12
 "     set background=dark
 " else
 "     set background=light
 " endif
-" set background=light
-" colorscheme onedark
 
 " code completion
 " -------------------------------------
@@ -313,7 +328,7 @@ command Qa qa
 " quit easy, quit often
 nnoremap <Leader>q :q<CR>
 
-map <leader>k :NERDTree<CR>
+map <leader>k :NERDTreeFind<CR>
 map <leader>v :vsp<CR>
 map <leader>s :sp<CR>
 
@@ -377,6 +392,9 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" Conflicts with YouCompleteMe
+let g:syntastic_java_checkers = []
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 " I want this but it is sooooo slow
@@ -429,22 +447,112 @@ let g:go_referrers_mode = 'gopls'
 " --------------------------------
 " Use The Silver Searcher
 " brew install the_silver_searcher
-if executable('ag')
-  let g:ackprg = 'ag --nogroup --column' " Use in Ack.vim
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+if executable('rg')
+  " Use Ag/Rg over Grep
+  set grepprg=rg\ --vimgrep
 
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""' " Use in CtrlP
+  " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""' " Use in CtrlP
   " bind K and M to grep word under cursor
   nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
   nnoremap M :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
   " bind \ (backward slash) to grep shortcut
-  command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-  nnoremap \ :Ag<SPACE>
+  command! -nargs=+ -complete=file -bar Rg grep! <args>|cwindow|redraw!
+  nnoremap \ :Rg<SPACE>
 endif
+
+" Use fzf instead of ctrlp.vim because it is faster
+set rtp+=/usr/local/opt/fzf
+nnoremap <C-p> :GFiles<CR>
+
+" Uncomment to move search to bottom of window
+" let g:fzf_layout = { 'down': '40%' }
+
+" Try to make fzf colors to match the colorscheme, not sure why g:fzf_colors doesn't
+" work for me properly but this snippet from the docs works well enough.
+let g:terminal_ansi_colors = [
+  \ '#4e4e4e', '#d68787', '#5f865f', '#d8af5f',
+  \ '#85add4', '#d7afaf', '#87afaf', '#d0d0d0',
+  \ '#626262', '#d75f87', '#87af87', '#ffd787',
+  \ '#add4fb', '#ffafaf', '#87d7d7', '#e4e4e4'
+\ ]
 
 " open line in quickfix window in new vertical split
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
+
+" ALE, only using it for Ruby
+" --------------------------------
+
+" Ruby
+call ale#linter#Define('ruby', {
+\   'name': 'sorbet-payserver',
+\   'lsp': 'stdio',
+\   'executable': 'true',
+\   'command': 'pay exec scripts/bin/typecheck --lsp',
+\   'language': 'ruby',
+\   'project_root': $HOME . '/stripe/pay-server',
+\})
+
+" Only run linters named in ale_linters settings.
+let g:ale_linters = {}
+let g:ale_linters_explicit = 1
+
+" if !exists("g:ale_linters")
+"     let g:ale_linters = {}
+" endif
+
+if fnamemodify(getcwd(), ':p') =~ $HOME.'/stripe/pay-server'
+  let g:ale_linters['ruby'] = ['sorbet-payserver']
+  let g:ale_fixers = {
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ 'ruby': ['sorbet', 'rubocop'],
+  \}
+end
+
+" Haven't gotten javalsp working yet...
+" Full install instructions:
+" https://github.com/georgewfraser/java-language-server.git
+" https://github.com/dense-analysis/ale/blob/d1e2aaf85dc81bad223065eec474d9f090fec70e/doc/ale-java.txt#L135
+" let g:ale_java_javalsp_executable='~/java-language-server/dist/lang_server_mac.sh'
+
+" if fnamemodify(getcwd(), ':p') =~ $HOME.'/stripe/zoolander'
+"     let g:ale_completion_enabled = 1
+"     let g:ale_linters['java'] = ['javalsp']
+"     let g:ale_fixers = {
+"     \ 'java': ['checkstyle', 'javalsp'],
+"     \}
+" end
+
+" Bind <leader>d to go-to-definition.
+nmap <silent> <leader>d <Plug>(ale_go_to_definition)
+" Bind <leader>f to find-references
+nmap <silent> <leader>f <Plug>(ale_find_references)
+" Bind <leader>f to find-references
+nnoremap <leader>g :ALESymbolSearch<SPACE>
+
+" Turn this off to save memory, useful for debugging because it saves
+" log output for ALEInfo viewing
+let g:ale_history_log_output = 1
+
+" Use Quickfix not loclist
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 1
+
+" Stripe specific stuff
+" --------------------------------
+" Livegrep + fzf
+function! LivegrepFzf(query, fullscreen)
+  let repo = (stridx(getcwd(), 'zoolander') == -1 ? 'pay-server' : 'zoolander')
+  let command_fmt = 'lg repo:'..substitute(getcwd(), '^.*/', '', '')." %s | sed \'s/stripe-internal\\/" . repo . "://g\'"
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 0, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+command! -nargs=* -bang Lg call LivegrepFzf(<q-args>, <bang>0)
+nnoremap <silent> <leader>l :Lg<cr>
+
+" For GBrowse
+let g:github_enterprise_urls = ['https://git.corp.stripe.com']
 
 
 " Temporary hacks
@@ -454,3 +562,14 @@ autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 if has('python3')
   silent! python3 1
 endif
+
+" Open current file in VSCode
+command! VSCode execute ":!code -g %:p\:" . line('.') . ":" . col('.')
+
+" Link to current line in an arbitrary web page TODO
+" command Clink :call system('open "https://foo.com/$(echo ' . expand('%:p') . ' | sed "s|$(git rev-parse --show-toplevel)||g")#L' . line(".") . '"')
+
+autocmd BufEnter *.sky :setlocal filetype=python
+
+" Copy filepath to buffer
+nmap ,cl :let @*=expand("%:p")<CR>

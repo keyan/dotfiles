@@ -1,12 +1,21 @@
+[core]
+    preloadindex = true
+
+    # Git uses indexes. Indexes get big, which makes them costlier to traverse.
+    # This splits the index into a big index with most of the history and a
+    # lil baby index which has the most recent stuff.
+    splitIndex = true
+
+    # Provides other cheats to 'git status' to find changed files.
+    untrackedCache = true
 [web]
 	browser = open
 [user]
-	name = Keyan Pishdadian
-	email = kpishdadian@gmail.com
+    name = Keyan Pishdadian
 [push]
-	default = current
+    default = current
 [help]
-        autocorrect=1
+    autocorrect=1
 [alias]
     cob = checkout -b
     co = checkout
@@ -19,9 +28,20 @@
     unignore = update-index --no-assume-unchanged
     ignored = !git ls-files -v | grep "^[[:lower:]]"
 [url "git@github.com:"]
-	insteadOf = https://github.com/
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    insteadOf = https://github.com/
+[feature]
+    manyFiles = true
+[hub]
+    protocol = ssh
+[checkout]
+    # This sets the number of worker processes that update files during a checkout.
+    # This should speed up large branch switches, and other checkout-y actions
+    # (reset, merge, etc). This is a very new git feature. Check out [0] for more details.
+    workers = -1
+[index]
+    # Turns on multithreading when reading from the index. This is on by default but I'm superstitious.
+    threads = true
+    # Changes to the index get appended so writes don't have weird seek time latency.
+    recordEndOfIndexEntries = true
+    # More multicore candy.
+    recordOffsetTable = true
