@@ -41,6 +41,7 @@ Plugin 'vim-python/python-syntax'
 " Autogenerate/updated ctags
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'rakr/vim-one'
+Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'dense-analysis/ale'
 " Ruby auto 'end' appending
@@ -348,8 +349,8 @@ inoremap <expr> <c-k> ("\<C-p>")
 map <leader>p :pclose<CR>
 
 " Quick and dirty latex recompile, ignore if accidently used on non-tex file
-" map <leader>l :! [ % == *.tex ] && pdflatex %<CR><CR>
-map <leader>l :! pdflatex %<CR><CR>
+" map <leader>j :! [ % == *.tex ] && pdflatex %<CR><CR>
+map <leader>j :! pdflatex %<CR><CR>
 
 " Add newline without going into insert mode, stay on current line
 nnoremap <C-J> a<CR><Esc>k$

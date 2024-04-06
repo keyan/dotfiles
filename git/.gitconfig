@@ -11,7 +11,8 @@
 [web]
 	browser = open
 [user]
-    name = Keyan Pishdadian
+	name = Keyan Pishdadian
+	email = kpishdadian@gmail.com
 [push]
     default = current
 [help]

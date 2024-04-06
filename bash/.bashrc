@@ -20,10 +20,11 @@ export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
 ## PATH setup
 # Golang
-export GOROOT=$(go env GOROOT)
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
+# export GOROOT=$(go env GOROOT)
+# export GOPATH=$HOME/go
+# export PATH=$PATH:$GOPATH/bin
+# export PATH=$PATH:$GOROOT/bin
+
 # Python
 export PATH="/usr/local/bin/python3:$PATH"
 
@@ -111,12 +112,13 @@ export PROMPT_COMMAND=set_bash_prompt
 # Directory navigation
 ##############################
 # Jump (in lieu of autojump)
-# eval "$(jump shell bash)"
+# export PATH="/opt/homebrew/bin/jump:$PATH"
+eval "$(jump shell bash)"
 # fasd is approved software, otherwise jump is just fine
-eval "$(fasd --init auto)"
-alias j='fasd_cd -d' # cd, same functionality as j in jump
+# eval "$(fasd --init auto)"
+# alias j='fasd_cd -d' # cd, same functionality as j in jump
 # For autocomplete
-_fasd_bash_hook_cmd_complete j
+# _fasd_bash_hook_cmd_complete j
 
 # Use default OS coloring for files when using ls
 export CLICOLOR=1

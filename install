@@ -5,6 +5,7 @@ case "$response" in
   [yY])
     link=(ln -svf)
     echo 'Storing backups for configuration files to /tmp/dotfile_backups/'
+    touch /tmp/dotfile_backups/
     cp ~/{.bashrc,.bash_profile,.vimrc,.git-prompt.sh,git-completion.bash,.tmux.conf} /tmp/dotfile_backups/
     ;;
   *)
@@ -96,22 +97,12 @@ if [ "`uname -a | grep -i darwin`" ]; then
     cp misc_configs/Inconsolata.otf /Library/Fonts/
 
     # Install homebrew.
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew tap homebrew/cask
 
     brew update
 
-    brew install vim \
-      git \
-      gh \
-      bash-completion \
-      tree \
-      eocat \
-      the_silver_searcher \
-      install --HEAD universal-ctags/universal-ctags/universal-ctags \
-      fzf \
-      jump \
-      fasd \
+    brew install vim; brew install git; brew install gh; brew install bash-completion; brew install tree; brew install the_silver_searcher; brew install --HEAD universal-ctags/universal-ctags/universal-ctags; brew install fzf; brew install jump
 
     # Fuzzy finding in bash.
     $(brew --prefix)/opt/fzf/install
