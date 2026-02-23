@@ -82,6 +82,7 @@ set magic                             " enables regex highlight
 set ttimeoutlen=50
 set timeoutlen=300	  	      " esc delay
 set clipboard=unnamed                 " yank+paste use the osx clipboard
+set cursorcolumn                      " vertical cursor highlighting
 
 
 " undofile

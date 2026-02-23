@@ -94,10 +94,13 @@ COLOR_NONE="\[\e[0m\]"
 # Set the full bash prompt.
 function set_bash_prompt () {
   # Set the PYTHON_VIRTUALENV variable.
-  if test -z "$VIRTUAL_ENV" ; then
-      PYTHON_VIRTUALENV=""
-  else
+  # If using conda instead, check for that envvar too.
+  if test -n "$VIRTUAL_ENV" ; then
       PYTHON_VIRTUALENV="${GREEN}[venv: `basename \"$VIRTUAL_ENV\"`]${COLOR_NONE} "
+  elif test -n "$CONDA_DEFAULT_ENV" ; then
+      PYTHON_VIRTUALENV="${GREEN}[conda: "$CONDA_DEFAULT_ENV"]${COLOR_NONE} "
+  else
+      PYTHON_VIRTUALENV=""
   fi
 
   if [ "`uname -a | grep -i Linux`" ]; then
@@ -125,3 +128,6 @@ export CLICOLOR=1
 
 # Mac Catalina+ keeps warning you about using bash...
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+export BROWSER=chrome
+export PATH="$HOME/.local/bin:$PATH"
